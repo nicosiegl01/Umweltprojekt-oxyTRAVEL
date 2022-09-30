@@ -1,5 +1,5 @@
 # Umweltprojekt-oxyTRAVEL
-Spalte 1 | Spalte 2 | Spalte 3
+ | Elias | Mia | Manuel | Nico
 -------- | -------- | --------
-Inhalt   | Inhalt   | Inhalt
-Inhalt   | Inhalt   | Inhalt
+User Interface   | Inhalt   | Inhalt | | 
+Systemarchitektur   | Inhalt   | Inhalt | |
