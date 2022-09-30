@@ -7,4 +7,5 @@
 |       Backend           |   M       |    I       |  I      |   V      |       
 |       Frontend          |   I       |    V       |  M      |   I      |      
 | Fahrzeug API suchen     |           |            |         |   V      |       
-|   Train API suchen      |   V       |            |         |          |       
+|   Train API suchen      |   V       |            |         |          | 
+|   Logo                  |           |     M       |    V     |          | 
