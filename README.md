@@ -1,11 +1,11 @@
 |                         | Elias     | Manuel     | Mia     | Nico     |       
 |:-------------------:    |:-----:    |:------:    |:---:    |:----:    |
-|    User Interface       |   I       |    V       |  M      |   I      |       
+|    User Interface       |          |    V       |  M      |         |       
 |  Systemarchitektur      |           |            |         |   V      |       
 |   Use Case Diagram      |           |            |  V      |   M      |       
-|  Nicht Ziele/Ziele      |   V       |    I       |  I      |   I      |       
-|       Backend           |   M       |    I       |  I      |   V      |       
-|       Frontend          |   I       |    V       |  M      |   I      |      
+|  Nicht Ziele/Ziele      |   V       |           |        |         |       
+|       Backend           |   M       |           |      |   V      |       
+|       Frontend          |          |    V       |  M      |         |      
 | Fahrzeug API suchen     |           |            |         |   V      |       
 |   Train API suchen      |   V       |            |         |          | 
 |   Logo                  |           |     M       |    V     |          | 
