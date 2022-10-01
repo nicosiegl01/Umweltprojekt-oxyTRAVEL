@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HTTPService} from "./http/http.service";
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Frontend';
 
-  constructor() {
+  constructor(private http:HTTPService) {
     //const
 
-    console.log('test')
+
 
     //oebb.searchStationsNew("Wien").then(console.log);
   }
