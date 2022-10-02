@@ -14,3 +14,7 @@ Mit oxyTRAVEL sollen Leute davon abgebracht werden mit dem Flugzeug an ihr Ziel 
 |   Train API suchen      |   V       |            |         |          | 
 |   Logo                  |           |     M       |    V     |          | 
 |   User-Stories                  |      M     |     M       |    M     |    V      | 
+
+## Verwendete API's
+- https://airlabs.co/docs/flight - API um an die Daten eines Flugs zu kommen
+- https://developer.mapquest.com - API um an die Daten für die Autostrecke sowie die Fahrradstrecke zu kommen
