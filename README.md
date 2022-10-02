@@ -1,4 +1,4 @@
-*oxyTRAVEL*
+#oxyTRAVEL
 
 |                         | Elias     | Manuel     | Mia     | Nico     |       
 |:-------------------:    |:-----:    |:------:    |:---:    |:----:    |
