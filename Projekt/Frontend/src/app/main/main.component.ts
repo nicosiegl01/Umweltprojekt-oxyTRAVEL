@@ -19,6 +19,15 @@ export class MainComponent implements OnInit {
   deptTime:string = ""
   timeDiff:number = 0;
   timeDiffStr:string = "";
+  dep_city:string = ""
+  arr_city:string = ""
+
+  durationCar:string = ""   //hh:mm:ss
+  wegAuto!:number         //in kilometer
+  fuelUsed!:number        //einheit unklar
+
+  durationBicycle!:string
+  wegBicycle!:number
 
   constructor(private http:HTTPService) { }
 
@@ -27,9 +36,9 @@ export class MainComponent implements OnInit {
   }
 
   getFlight(){
-    this.http.getFlightData("AF762").subscribe(temp=>{
+    this.http.getFlightData("JU311").subscribe(temp=>{
       console.error('Flug:')
-      console.log(temp.response.arr_name)
+      console.log(temp)
       this.departureCountry = temp.response.dep_country
       this.arrivalCountry = temp.response.arr_country
       this.departureStation = temp.response.dep_name
@@ -39,7 +48,19 @@ export class MainComponent implements OnInit {
       this.deptTime_utc = temp.response.dep_time_utc
       this.arrTime = temp.response.arr_time
       this.deptTime = temp.response.dep_time
+      this.dep_city = temp.response.dep_city
+      this.arr_city = temp.response.arr_city
       this.getTimeDifference()
+
+      this.http.getCarRoute(this.dep_city,this.arr_city,options.shortest).subscribe(temp2=>{
+        this.durationCar = temp2.route.formattedTime
+        this.fuelUsed = temp2.route.fuelUsed
+        this.wegAuto = temp2.route.distance * 1,609344
+      })
+      this.http.getBicycleRoute(this.dep_city,this.arr_city).subscribe(temp3=>{
+        this.wegBicycle = temp3.route.distance * 1,609344
+        this.durationBicycle = temp3.route.formattedTime
+      })
     })
   }
 
@@ -54,9 +75,11 @@ export class MainComponent implements OnInit {
     var hrs = parseInt(String(Number(timeHours)));
     var min = Math.round((Number(timeHours)-hrs) * 60);
     var clocktime = hrs+' Hours '+min+' Minutes';
-    console.log(timeHours)
-    console.log(clocktime)
     this.timeDiffStr = clocktime
   }
 
+}
+enum options {
+  shortest="shortest",
+  fastest="fastest"
 }
