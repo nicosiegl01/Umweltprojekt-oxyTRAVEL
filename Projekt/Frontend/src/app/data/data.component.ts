@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HTTPService} from "../http/http.service";
+import {AirportCreateService} from "../http/airport-create.service";
 
 @Component({
   selector: 'app-main',
@@ -29,9 +30,10 @@ export class DataComponent implements OnInit {
   durationBicycle!:string
   wegBicycle!:number
 
-  constructor(private http:HTTPService) { }
+  constructor(private http:HTTPService, private http2:AirportCreateService) { }
 
   ngOnInit(): void {
+    this.http2.pushAll()
 
   }
 
