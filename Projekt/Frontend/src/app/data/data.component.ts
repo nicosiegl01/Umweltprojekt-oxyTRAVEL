@@ -30,10 +30,10 @@ export class DataComponent implements OnInit {
   durationBicycle!:string
   wegBicycle!:number
 
-  constructor(private http:HTTPService, private http2:AirportCreateService) { }
+  constructor(private http:HTTPService/*, private http2:AirportCreateService*/) { }
 
   ngOnInit(): void {
-    this.http2.pushAll()
+    //this.http2.pushAll()
 
   }
 

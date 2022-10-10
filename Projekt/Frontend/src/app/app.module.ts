@@ -8,9 +8,11 @@ import {DataComponent} from "./data/data.component";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { UpdateDatabaseComponent } from './update-database/update-database.component';
 
 const appRoutes: Routes = [
   {path:"data", component:DataComponent},
+  {path:"updateDB", component:UpdateDatabaseComponent},
   {path:"", component:LandingPageComponent}
 ]
 
@@ -20,7 +22,8 @@ const appRoutes: Routes = [
     DataComponent,
     LandingPageComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    UpdateDatabaseComponent
   ],
   imports: [
     BrowserModule,
