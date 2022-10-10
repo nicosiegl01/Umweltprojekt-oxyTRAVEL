@@ -29,4 +29,18 @@ public class AirportRessource {
     public List<Airport> getAllAirports(){
         return this.airportRepository.listAll();
     }
+
+    @GET
+    @Path("/findById/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Airport getAirportById(@PathParam("id") Long id){
+        return this.airportRepository.findById(id);
+    }
+
+    @GET
+    @Path("/findById/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Airport getAirportById(@PathParam("name") String name){
+        return (Airport) this.airportRepository.find("name=?",name);
+    }
 }
