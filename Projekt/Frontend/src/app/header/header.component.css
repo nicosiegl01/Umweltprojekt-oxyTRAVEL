@@ -1,0 +1,28 @@
+.navBar {
+  width:100%;
+  height:15vh;
+  box-sizing: border-box;
+  background-color: #a58bbf;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--lightGreen2);
+}
+
+.navLink {
+  box-sizing: border-box;
+  margin: 0 7vw 0 7vw;
+  font-size: 2vh;
+  text-decoration: none;
+  color:var(--backgroundBeige);
+  letter-spacing: 0.2vw;
+  /*color:white;*/
+}
+
+#logoPicture {
+  width: 8vh;
+}
+
+.linkContainer {
+
+}

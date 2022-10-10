@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.03vw;
+}
+
+body {
+  background-color: var(--backgroundBeige);
+}
+
+:root {
+  --pink1: #F06B6B;
+  --blue1: #56B6C9;
+  --backgroundBeige: #F5EFE6;
+  --lightGreen1: #8DC284;
+  --lightGreen2: #6D8B74;
+  --darkgreen1: #386543;
+}
+
+p {
+  font-size: 2vh;
+}
+
+h1 {
+  font-weight: bolder;
+}

@@ -12,8 +12,6 @@ export class AppComponent {
   constructor(private http:HTTPService) {
     //const
 
-
-
     //oebb.searchStationsNew("Wien").then(console.log);
   }
 }

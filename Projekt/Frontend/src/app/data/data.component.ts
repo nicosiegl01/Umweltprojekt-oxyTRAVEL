@@ -4,10 +4,10 @@ import {HTTPService} from "../http/http.service";
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.css']
 })
-export class MainComponent implements OnInit {
+export class DataComponent implements OnInit {
   departureStation:string = ""
   departureCountry:string = ""
   arrivalStation:string = ""

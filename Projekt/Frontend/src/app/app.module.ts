@@ -4,17 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
-import { MainComponent } from './main/main.component';
+import {DataComponent} from "./data/data.component";
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
-  {path:"", component:MainComponent}
+  {path:"data", component:DataComponent},
+  {path:"", component:LandingPageComponent}
 ]
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    DataComponent,
+    LandingPageComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
