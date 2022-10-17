@@ -3,6 +3,7 @@ package at.htl.Model;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.io.Serializable;
 
@@ -11,6 +12,6 @@ public class Airport extends PanacheEntity implements Serializable{
     public String name;
     public String shortName;
     public String recordid;
-    public Long latitude;
-    public Long longitude;
+    public float latitude;
+    public float longitude;
 }

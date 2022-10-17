@@ -23,7 +23,8 @@ const appRoutes: Routes = [
   {path:"account", component:AccountComponent},
   {path:"team", component: TeamComponent},
   {path:"login", component: LoginComponent},
-  {path:"register", component: RegisterComponent}
+  {path:"register", component: RegisterComponent},
+  {path:"update", component: UpdateDatabaseComponent}
 ]
 
 @NgModule({
