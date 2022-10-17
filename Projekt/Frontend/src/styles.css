@@ -12,7 +12,8 @@ body {
 
 :root {
   --pink1: #F06B6B;
-  --blue1: #56B6C9;
+  --pink2: #b75353;
+  --blue1: #85aecc;
   --backgroundBeige: #F5EFE6;
   --lightGreen1: #8DC284;
   --lightGreen2: #6D8B74;
@@ -26,3 +27,32 @@ p {
 h1 {
   font-weight: bolder;
 }
+
+.form-container {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+
+  background: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-top {
+  margin-top: 16px !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
