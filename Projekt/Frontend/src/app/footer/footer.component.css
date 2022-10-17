@@ -1,0 +1,17 @@
+.footerContainer {
+  background-color: var(--lightGreen2);
+  color: var(--backgroundBeige);
+  height: 5vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  padding-top: 1vh;
+  box-sizing: border-box;
+}
+
+.oxySpan {
+  color: var(--blue1);
+}
