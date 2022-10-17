@@ -1,0 +1,19 @@
+.material-symbols-outlined {
+  font-size: 5vh;
+}
+
+.loginLink:hover {
+  background-color: var(--blue1);
+}
+
+.loginLink {
+  position: absolute;
+  right: 0.5vw;
+  top: 1vh;
+  height: 5.25vh;
+  padding-right: 0.05vw;
+  border-radius: 30%;
+  background-color: var(--pink1);
+  color: var(--backgroundBeige);
+  transition: background-color 0.3s ease-in;
+}

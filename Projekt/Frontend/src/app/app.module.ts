@@ -2,18 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {DataComponent} from "./data/data.component";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { UpdateDatabaseComponent } from './update-database/update-database.component';
+import { AccountComponent } from './account/account.component';
+import { TeamComponent } from './team/team.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {path:"data", component:DataComponent},
-  {path:"updateDB", component:UpdateDatabaseComponent},
-  {path:"", component:LandingPageComponent}
+  {path:"", component:LandingPageComponent},
+  {path:"account", component:AccountComponent},
+  {path:"team", component: TeamComponent},
+  {path:"login", component: LoginComponent},
+  {path:"register", component: RegisterComponent}
 ]
 
 @NgModule({
@@ -23,13 +31,18 @@ const appRoutes: Routes = [
     LandingPageComponent,
     FooterComponent,
     HeaderComponent,
-    UpdateDatabaseComponent
+    UpdateDatabaseComponent,
+    TeamComponent,
+    LoginComponent,
+    RegisterComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
