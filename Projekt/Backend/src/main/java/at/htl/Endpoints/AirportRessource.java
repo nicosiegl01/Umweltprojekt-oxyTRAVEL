@@ -43,4 +43,14 @@ public class AirportRessource {
     public Airport getAirportById(@PathParam("name") String name){
         return (Airport) this.airportRepository.find("name=?",name);
     }
+
+    @GET
+    @Path("findAirportsByName/{air1}/{air2}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Airport> findAirportsByName(@PathParam("air1") String airport1,
+                                            @PathParam("air2") String airport2){
+        //return this.airportRepository.find("na");
+        return this.airportRepository.getAirports(airport1,airport2);
+    }
+
 }
