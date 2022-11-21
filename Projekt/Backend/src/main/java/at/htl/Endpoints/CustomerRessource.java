@@ -21,7 +21,7 @@ public class CustomerRessource {
     }
 
     @GET
-    @Path("/getByUsername/{mail}/{password}")
+    @Path("/login/{mail}/{password}")
     @Produces(MediaType.APPLICATION_JSON)
     public boolean loginCustomer(@PathParam("mail") String mail,
                                  @PathParam("password") String password){
