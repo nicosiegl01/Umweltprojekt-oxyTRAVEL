@@ -12,7 +12,6 @@
   box-sizing: border-box;
 }
 
-.footerContainer p img{
-  padding-top: 1%;
-  width: 5vh;
+.footerContainer img{
+  width: 10vh;
 }
