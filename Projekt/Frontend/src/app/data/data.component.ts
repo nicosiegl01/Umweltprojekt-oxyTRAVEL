@@ -28,7 +28,9 @@ export class DataComponent implements OnInit {
   fuelUsed!:number        //einheit unklar
 
   durationBicycle!:string
-  wegBicycle!:number
+  wegBicycle!:number;
+
+  distance!: number;
 
   constructor(private http:HTTPService/*, private http2:AirportCreateService*/) { }
 
@@ -59,6 +61,7 @@ export class DataComponent implements OnInit {
         this.fuelUsed = temp2.route.fuelUsed
         this.wegAuto = temp2.route.distance * 1,609344
       })
+      
       this.http.getBicycleRoute(this.dep_city,this.arr_city).subscribe(temp3=>{
         this.wegBicycle = temp3.route.distance * 1,609344
         this.durationBicycle = temp3.route.formattedTime
@@ -70,7 +73,6 @@ export class DataComponent implements OnInit {
     //this.deptTime_utc - this.arrTime_utc
     const date1 = new Date(this.arrTime_utc);
     const date2 = new Date(this.deptTime_utc);
-
     const msBetweenDates = date2.getTime() - date1.getTime();
     let timeHours = ((msBetweenDates/1000)/60)/60
     timeHours = Math.abs(timeHours)
@@ -78,9 +80,32 @@ export class DataComponent implements OnInit {
     var min = Math.round((Number(timeHours)-hrs) * 60);
     var clocktime = hrs+' Hours '+min+' Minutes';
     this.timeDiffStr = clocktime
+    this.getDistance(48, 14, -46, 168);
+    this.getEmissions();
   }
 
+  getDistance(xBreitengrad: number, xLaengengrad: number, yBreitengrad: number, yLaengengrad: number){
+    // var Luftlinie = 6.378,137 • (z)
+    // var z =  sin(xA) • sin(xB)  +  cos(xA) • cos(xB) • cos(yB - yA)
+    // 50 = breitengrad Frankfurt / 48
+    // 8.58 = Längengrad Frankfurt / 14
+    // -33.94 = Breitengrad Sydney / -46
+    // 151.175 = Längengrad Sydney /168
+    this.distance = 6371 * Math.acos(Math.sin(this.toDegree(xBreitengrad)) * Math.sin(this.toDegree(yBreitengrad)) + Math.cos(this.toDegree(xBreitengrad)) * Math.cos(this.toDegree(yBreitengrad)) * Math.cos(this.toDegree(yLaengengrad) - this.toDegree(xLaengengrad))) * Math.PI/this.toDegree(180); 
+    console.log(this.distance);
+  }
+
+  toDegree(radians: number ){
+    return radians * (Math.PI / 180);
+  }
+
+  getEmissions(){
+    let emissions = (this.distance / 100) * 3.58;
+    emissions = Math.floor(emissions);
+    console.log(emissions + " Liter");
+  }
 }
+
 enum options {
   shortest="shortest",
   fastest="fastest"

@@ -3,12 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {Flight} from "../interfaces/Flight.module";
 import {FlightDataModule} from "../interfaces/FlightData.module";
 import {MapQuestModel} from "../interfaces/MapQuest.model";
+import { Airport } from '../Airport';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HTTPService {
   url:string = ""
+  path:string = "http://localhost:8081/api/"
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +27,11 @@ export class HTTPService {
   getBicycleRoute(loc1:string, loc2:string){
     let url = "http://www.mapquestapi.com/directions/v2/route?key=yPOsANY3nbgYOult8LRSLLHkbZfjXBiP&from="+loc1+"&to="+loc2+"&routeType=bicycle"
     return this.http.get<MapQuestModel>(url)
+  }
+
+  getAirport(Flightnumber: number){
+    let url = "airport/findAirportsByName/";
+    return this.http.get<Airport>(url);
   }
 }
 
