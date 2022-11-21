@@ -12,6 +12,7 @@
   box-sizing: border-box;
 }
 
-.oxySpan {
-  color: var(--blue1);
+.footerContainer p img{
+  padding-top: 1%;
+  width: 5vh;
 }
