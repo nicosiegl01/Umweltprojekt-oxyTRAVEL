@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     TeamComponent,
     LoginComponent,
     RegisterComponent,
-    AccountComponent
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
