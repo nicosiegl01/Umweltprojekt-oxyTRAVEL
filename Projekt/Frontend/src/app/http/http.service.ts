@@ -4,6 +4,7 @@ import {Flight} from "../interfaces/Flight.module";
 import {FlightDataModule} from "../interfaces/FlightData.module";
 import {MapQuestModel} from "../interfaces/MapQuest.model";
 import { Airport } from '../Airport';
+import {Customer} from "../interfaces/Customer.modle";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,25 @@ export class HTTPService {
   getAirportByName(airport: string, airport1: string){
     let url = "airport/findAirportsByName/";
     return this.http.get<Airport>(url + airport + "/" + airport1);
+  }
+
+  createUser(mail:string,password:string){
+    let url = this.path + "create";
+    return this.http.post(url, {
+      "mail":mail,
+      "password":password
+    })
+  }
+
+  login(mail:string, password:string){
+    let url = this.path + "login/"+mail+"/"+password
+    return this.http.get(url)
+  }
+
+  findUserByMail(mail:string){
+    let url = this.path + "/findByMail/"+mail
+    return this.http.get<Customer>(url)
+
   }
 }
 

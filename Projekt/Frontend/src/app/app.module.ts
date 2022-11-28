@@ -16,6 +16,12 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 const appRoutes: Routes = [
   {path:"data", component:DataComponent},
@@ -23,7 +29,7 @@ const appRoutes: Routes = [
   {path:"account", component:AccountComponent},
   {path:"team", component: TeamComponent},
   {path:"login", component: LoginComponent},
-  {path:"register", component: RegisterComponent},
+  {path:"register", component: SignUpComponent},
   {path:"update", component: UpdateDatabaseComponent}
 ]
 
@@ -39,6 +45,7 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     AccountComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

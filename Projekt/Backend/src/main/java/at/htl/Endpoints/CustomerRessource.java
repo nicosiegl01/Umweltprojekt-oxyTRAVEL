@@ -5,7 +5,11 @@ import at.htl.Repository.CustomerRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
 import java.util.List;
 
 @Path("/api")
@@ -31,7 +35,21 @@ public class CustomerRessource {
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createCustomer(Customer c){
+    public Response createCustomer(Customer c, @Context UriInfo context){
+        if(this.customerRepository.findEmail(c.mail)!= null){
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+        URI uri = context.getAbsolutePathBuilder().path(String.valueOf(c.id)).build();
+
         this.customerRepository.persist(c);
+        return Response.status(Response.Status.NO_CONTENT).entity(uri).build();
+    }
+
+    @GET
+    @Path("/findByMail/{mail}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Customer findCustomerByMail(@PathParam("mail") String mail){
+        return this.customerRepository.findEmail(mail);
     }
 }
