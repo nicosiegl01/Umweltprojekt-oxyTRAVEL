@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,17 +8,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-    register = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-  });
-
-  constructor() {
-
-  }
-
   ngOnInit(): void {
   }
+
 
 }

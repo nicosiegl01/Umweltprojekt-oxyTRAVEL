@@ -1,3 +1,7 @@
+* {
+  color: var(--backgroundBeige);
+  box-sizing: border-box;
+}
 
 .material-symbols-outlined {
   font-size: 5vh;
@@ -14,9 +18,9 @@
   height: 5.25vh;
   padding-right: 0.05vw;
   border-radius: 30%;
-  background-color: var(--pink1);
+  background-color: var(--lightGreen2);
   color: var(--backgroundBeige);
-  transition: background-color 0.3s ease-in;
+  transition: background-color 0.1s ease-in;
   cursor: pointer;
 }
 
@@ -24,4 +28,110 @@
   font-size: 1.2rem;
   margin-left: 8px;
   cursor: pointer;
+}
+
+.loginForm {
+  width: 30vw;
+  height: 45vh;
+  margin: 0 auto;
+  margin-top: 27.5vh;
+  background-color: var(--lightGreen2);
+  border-radius: 25px;
+}
+
+.inputBox {
+  width:25vw;
+  height: 35vh;
+  margin: 0 auto;
+  padding: 0vh 5vh 8vw;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 20vw;
+  border: 0;
+  border-bottom: 2px solid var(--backgroundBeige);
+  outline: 0;
+  font-size: 1rem;
+  color: var(--backgroundBeige);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--backgroundBeige);
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  border-width: 3px;
+  font-weight: bolder;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--blue1);
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+.submitButtonLogin {
+  width: 10vw;
+  height: 5vh;
+  margin-left: 4vw;
+  background-color: var(--backgroundBeige);
+  border: none;
+  color: var(--blue1);
+  padding: 1vh 2vh 1vh 2vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-top: 9.5vh;
+  margin-bottom: 2vh;
+  transition: background-color, color linear 0.2s;
+}
+
+.submitButtonLogin:hover{
+  color: var(--backgroundBeige);
+  background-color: var(--blue1);
+}
+
+.signUpLink {
+  color: var(--blue1);
+}
+
+.loginText {
+  text-align: center;
+  padding-top: 4vh;
+  font-size: 5vh;
 }
