@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+body.mat-typography {
+  height: 10vh;
+}
+
 .material-symbols-outlined {
   font-size: 5vh;
 }
