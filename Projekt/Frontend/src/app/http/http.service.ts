@@ -33,6 +33,11 @@ export class HTTPService {
     let url = "airport/findAirportsByName/";
     return this.http.get<Airport>(url);
   }
+
+  getAirportByName(airport: string, airport1: string){
+    let url = "airport/findAirportsByName/";
+    return this.http.get<Airport>(url + airport + "/" + airport1);
+  }
 }
 
 enum options {

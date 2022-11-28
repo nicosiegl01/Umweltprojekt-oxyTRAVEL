@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HTTPService} from "../http/http.service";
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-main',
@@ -21,6 +22,8 @@ export class DataComponent implements OnInit {
   timeDiffStr:string = "";
   dep_city:string = ""
   arr_city:string = ""
+  aiport:string = "";
+  airport1: string = ""
 
   durationCar:string = ""   //hh:mm:ss
   wegAuto!:number         //in kilometer
@@ -31,11 +34,13 @@ export class DataComponent implements OnInit {
 
   distance!: number;
 
-  constructor(private http:HTTPService/*, private http2:AirportCreateService*/) { }
+  constructor(private http:HTTPService/*, private http2:AirportCreateService*/) {}
 
   ngOnInit(): void {
-    //this.http2.pushAll()
-
+    this.http.getAirportByName(this.aiport, this.airport1).subscribe(temp => {
+      let airports = temp;
+      console.log(airports);
+    })
   }
 
   getFlight(){
@@ -60,7 +65,7 @@ export class DataComponent implements OnInit {
         this.fuelUsed = temp2.route.fuelUsed
         this.wegAuto = temp2.route.distance * 1,609344
       })
-      
+
       this.http.getBicycleRoute(this.dep_city,this.arr_city).subscribe(temp3=>{
         this.wegBicycle = temp3.route.distance * 1,609344
         this.durationBicycle = temp3.route.formattedTime

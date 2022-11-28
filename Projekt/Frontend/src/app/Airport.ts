@@ -1,3 +1,8 @@
 export class Airport{
-    airportName!: string
+    id!: number
+    name!: string
+    shortName!: string
+    recordid!: string
+    latitude!: number
+    longitude!: number
 }
