@@ -1,6 +1,6 @@
 INSERT INTO Customer(id,mail,password) VALUES (1, 'sieglnico@gmail.com','passme');
 INSERT INTO Customer(id,mail,password) VALUES (2, 'elias.ganglberger12345@gmail.com','passme');
-INSERT INTO Customer(id,mail,password) VALUES (3, 'sieglnico@gmail.com','passme');
+INSERT INTO Customer(id,mail,password) VALUES (3, 'miamandel@gmail.com','passme');
 
 INSERT INTO APP.AIRPORT (ID, LATITUDE, LONGITUDE, NAME, RECORDID, SHORTNAME) VALUES (100, -3.2860701084136963, 103.87999725341797, 'Pendopo Airport', 'cd04f9d080b35c0dd083c02e5e118568b7060910', 'WIPQ');
 INSERT INTO APP.AIRPORT (ID, LATITUDE, LONGITUDE, NAME, RECORDID, SHORTNAME) VALUES (105, 68.14088439941406, -53.44145965576172, 'Ikerassaarsuk Heliport', '9c386e14b8912c6bb00677a068bbfc1e05c83cfe', 'BGIK');

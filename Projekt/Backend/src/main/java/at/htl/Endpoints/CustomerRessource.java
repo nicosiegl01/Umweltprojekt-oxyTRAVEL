@@ -23,7 +23,7 @@ public class CustomerRessource {
     @GET
     @Path("/login/{mail}/{password}")
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean loginCustomer(@PathParam("mail") String mail,
+    public Customer loginCustomer(@PathParam("mail") String mail,
                                  @PathParam("password") String password){
         return this.customerRepository.findByMail(mail, password);
     }

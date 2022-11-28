@@ -10,6 +10,6 @@ import java.io.Serializable;
 
 @Entity
 public class Customer extends PanacheEntity implements Serializable {
-    String mail;
-    String password;
+    public String mail;
+    public String password;
 }

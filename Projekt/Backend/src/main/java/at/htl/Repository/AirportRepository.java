@@ -22,4 +22,15 @@ public class AirportRepository implements PanacheRepository<Airport> {
         q.setParameter("name2", airport2);
         return q.getResultList();
     }
+
+    public Airport findAirportById(Long id){
+        String sql = "SELECT a FROM Airport a WHERE a.id = :id";
+        TypedQuery q = em.createQuery(sql, Airport.class);
+        q.setParameter("id", id);
+        try{
+            return (Airport) q.getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
+    }
 }

@@ -33,8 +33,9 @@ public class AirportRessource {
     @GET
     @Path("/findById/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Airport getAirportById(@PathParam("id") Long id){
-        return this.airportRepository.findById(id);
+        return this.airportRepository.findAirportById(id);
     }
 
     @GET
@@ -49,7 +50,6 @@ public class AirportRessource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Airport> findAirportsByName(@PathParam("air1") String airport1,
                                             @PathParam("air2") String airport2){
-        //return this.airportRepository.find("na");
         return this.airportRepository.getAirports(airport1,airport2);
     }
 

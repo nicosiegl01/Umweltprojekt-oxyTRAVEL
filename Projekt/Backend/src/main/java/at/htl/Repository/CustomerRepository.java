@@ -15,16 +15,11 @@ public class CustomerRepository implements PanacheRepository<Customer> {
     @Inject
     EntityManager em;
 
-    public boolean findByMail(String mail, String password){
+    public Customer findByMail(String mail, String password){
         String jpql = "SELECT c FROM Customer c where c.mail=:name and c.password=:password";
-        try{
-            TypedQuery q = em.createQuery(jpql, Customer.class);
-            q.setParameter("name", mail);
-            q.setParameter("password",password);
-            Customer c = (Customer) q.getSingleResult();
-            return true;
-        }catch (Exception e){
-            return false;
-        }
+        TypedQuery q = em.createQuery(jpql,Customer.class);
+        q.setParameter("name",mail);
+        q.setParameter("password",password);
+        return (Customer) q.getSingleResult();
     }
 }
