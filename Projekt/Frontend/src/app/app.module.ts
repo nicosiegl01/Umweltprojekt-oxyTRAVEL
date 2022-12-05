@@ -12,7 +12,6 @@ import { UpdateDatabaseComponent } from './update-database/update-database.compo
 import { AccountComponent } from './account/account.component';
 import { TeamComponent } from './team/team.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -43,7 +42,6 @@ const appRoutes: Routes = [
     UpdateDatabaseComponent,
     TeamComponent,
     LoginComponent,
-    RegisterComponent,
     AccountComponent,
     SignUpComponent,
   ],
