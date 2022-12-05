@@ -1,5 +1,6 @@
 package at.htl.Endpoints;
 
+import at.htl.DTO.FlightSearchDTO;
 import at.htl.Model.FlightSearch;
 import at.htl.Repository.SearchRepository;
 
@@ -18,7 +19,8 @@ public class SearchRessource {
     @POST
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public void getCount(FlightSearch f){
+    public void getCount(FlightSearchDTO flight){
+        FlightSearch f = new FlightSearch(flight.flightnumber);
         this.searchRepository.persist(f);
     }
 

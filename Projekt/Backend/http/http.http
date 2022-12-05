@@ -19,3 +19,15 @@ GET http://localhost:8081/api/search/count
 
 ###
 GET http://localhost:8081/api/search/getAll
+
+
+###
+GET http://localhost:8081/api/login/sieglnico@gmail.com/passme
+
+###
+POST http://localhost:8081/api/search
+Content-Type: application/json
+
+{
+  "flightnumber": "FRQ123"
+}

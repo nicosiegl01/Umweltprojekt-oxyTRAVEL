@@ -63,6 +63,13 @@ export class HTTPService {
     let url = this.path + "search/count"
     return this.http.get<number>(url)
   }
+
+  addFlightSearch(flight:string){
+    let url = this.path + "search"
+    return this.http.post(url,{
+      "flightnumber": "FRQ123"
+    })
+  }
 }
 
 enum options {
