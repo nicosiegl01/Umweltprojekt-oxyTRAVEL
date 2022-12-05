@@ -58,6 +58,11 @@ export class HTTPService {
     return this.http.get<Customer>(url)
 
   }
+
+  findNumOfSearchs(){
+    let url = this.path + "search/count"
+    return this.http.get<number>(url)
+  }
 }
 
 enum options {

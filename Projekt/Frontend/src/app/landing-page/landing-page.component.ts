@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HTTPService} from "../http/http.service";
 
 @Component({
   selector: 'app-landing-page',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  counter:number = 0
 
-  constructor() { }
+  constructor(private http:HTTPService) { }
 
   ngOnInit(): void {
+    this.http.findNumOfSearchs().subscribe(temp=>{
+      console.log(temp)
+      this.counter = temp
+    })
   }
 
 }

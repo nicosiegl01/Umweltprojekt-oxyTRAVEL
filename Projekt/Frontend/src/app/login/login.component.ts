@@ -14,10 +14,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
 
   });
+  counter:number = 0
 
   constructor(private router: Router,private http:HTTPService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   get email() {
     return this.loginForm.get('email');
