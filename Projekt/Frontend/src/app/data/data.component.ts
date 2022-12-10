@@ -25,9 +25,13 @@ export class DataComponent implements OnInit {
   arr_city:string = ""
   aiport:string = "";
   airport1: string = ""
+<<<<<<< HEAD
   airportArray: Airport[] = [];
   arr_iaco:string = "";
   dep_iaco:string = "";
+=======
+  inputFlight:string = ""
+>>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
 
   durationCar:string = ""   //hh:mm:ss
   wegAuto!:number         //in kilometer
@@ -35,8 +39,10 @@ export class DataComponent implements OnInit {
 
   durationBicycle!:string
   wegBicycle!:number;
+  lastSearch:string = ""
 
   distance!: number;
+  hideDetails:boolean = true
 
   inputText: any = "";
 
@@ -53,9 +59,17 @@ export class DataComponent implements OnInit {
     this.getFlight(this.inputText);
   }
 
+<<<<<<< HEAD
   getFlight(flightnumber: any){
     this.http.getFlightData(flightnumber).subscribe(temp=>{
+=======
+  getFlight(){
+    this.http.getFlightData(this.inputFlight).subscribe(temp=>{
+>>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
       console.error('Flug:')
+      this.hideDetails = false
+      this.lastSearch = this.inputFlight
+      this.inputFlight = ""
       console.log(temp)
       this.departureCountry = temp.response.dep_country
       this.arrivalCountry = temp.response.arr_country
@@ -75,6 +89,9 @@ export class DataComponent implements OnInit {
         this.durationCar = temp2.route.formattedTime
         this.fuelUsed = temp2.route.fuelUsed
         this.wegAuto = temp2.route.distance * 1,609344
+        console.log(temp2.route.formattedTime)
+        console.log(temp2.route.fuelUsed)
+        console.log(temp2.route.distance * 1,609344)
       })
 
       this.http.getBicycleRoute(this.dep_city,this.arr_city).subscribe(temp3=>{
@@ -117,7 +134,7 @@ export class DataComponent implements OnInit {
     // 8.58 = Längengrad Frankfurt / 14
     // -33.94 = Breitengrad Sydney / -46
     // 151.175 = Längengrad Sydney /168
-    this.distance = 6371 * Math.acos(Math.sin(this.toDegree(xBreitengrad)) * Math.sin(this.toDegree(yBreitengrad)) + Math.cos(this.toDegree(xBreitengrad)) * Math.cos(this.toDegree(yBreitengrad)) * Math.cos(this.toDegree(yLaengengrad) - this.toDegree(xLaengengrad))) * Math.PI/this.toDegree(180); 
+    this.distance = 6371 * Math.acos(Math.sin(this.toDegree(xBreitengrad)) * Math.sin(this.toDegree(yBreitengrad)) + Math.cos(this.toDegree(xBreitengrad)) * Math.cos(this.toDegree(yBreitengrad)) * Math.cos(this.toDegree(yLaengengrad) - this.toDegree(xLaengengrad))) * Math.PI/this.toDegree(180);
     console.log(this.distance);
   }
 

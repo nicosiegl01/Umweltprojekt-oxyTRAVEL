@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 @Entity
 public class Airport extends PanacheEntity implements Serializable{
+    @Column(unique = true)
     public String name;
     public String shortName;
     public String recordid;

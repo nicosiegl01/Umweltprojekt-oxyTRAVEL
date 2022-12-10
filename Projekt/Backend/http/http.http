@@ -1,0 +1,33 @@
+###
+GET http://localhost:8080/api/airport/getAll
+
+<> 2022-10-10T152320.200.json
+<> 2022-10-10T152217.200.json
+<> 2022-10-10T152016.200.json
+<> 2022-10-10T152004.200.json
+
+
+###
+GET http://localhost:8081/api/airport/findById/2000
+
+
+###
+GET http://localhost:8081/api/airport/findById/2000
+
+###
+GET http://localhost:8081/api/search/count
+
+###
+GET http://localhost:8081/api/search/getAll
+
+
+###
+GET http://localhost:8081/api/login/sieglnico@gmail.com/passme
+
+###
+POST http://localhost:8081/api/search
+Content-Type: application/json
+
+{
+  "flightnumber": "FRQ123"
+}

@@ -1,26 +1,42 @@
 <app-header></app-header>
 
+<<<<<<< HEAD
 <p>main works!</p>
 <button (click)="getFlight('AA6')">test</button>
 <p>From {{departureStation}} | {{departureCountry}}</p>
 <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
 <p>Dauer des Flugs: {{timeDiffStr}}</p>
+=======
+<input placeholder="Flugnummer" [(ngModel)]="inputFlight">
+>>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
 
-<hr>
+<button [disabled]="inputFlight==''" (click)="getFlight()">test</button>
 
-<h1>Auto</h1>
-<p>Dauer: {{durationCar | date: 'hh:mm:ss'}}</p>
-<p>Weg: {{wegAuto}}</p>
-<p>Sprit: {{fuelUsed}}</p>
+<div class="data" [hidden]="hideDetails">
+  <h1>Details for flight: {{lastSearch}}</h1>
+  <p>From {{departureStation}} | {{departureCountry}}</p>
+  <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
+  <p>Dauer des Flugs: {{timeDiffStr}}</p>
+
+  <hr>
+
+  <h1>Auto</h1>
+  <p>Dauer: {{durationCar | date: 'hh:mm:ss'}}</p>
+  <p>Weg: {{wegAuto}}</p>
+  <p>Sprit: {{fuelUsed}}</p>
 
 
-<hr>
-
-<h1>Fahrrad</h1>
-<p>Dauer: {{durationBicycle}} hh:mm:ss</p>
-<p>Weg: {{wegBicycle}}</p>
-
+<<<<<<< HEAD
 <input id="Flugnummer" type="text" [(ngModel)]="inputText">
 <button (click)="getFlightWithNumber()">Submit</button>
+=======
+  <hr>
+
+  <h1>Fahrrad</h1>
+  <p>Dauer: {{durationBicycle}} hh:mm:ss</p>
+  <p>Weg: {{wegBicycle}}</p>
+
+</div>
+>>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
 <app-footer></app-footer>
 

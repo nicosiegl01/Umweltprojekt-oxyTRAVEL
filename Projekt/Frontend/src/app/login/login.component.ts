@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import {HTTPService} from "../http/http.service";
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,14 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
-    
+
   });
+  counter:number = 0
 
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router,private http:HTTPService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   get email() {
     return this.loginForm.get('email');
@@ -29,10 +30,12 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    const { email, password } = this.loginForm.value;
-
-    if (!this.loginForm.valid || !email || !password) {
-      return;
-    }
+    let mail:string = ""
+    mail = this.loginForm.value.email
+    let pw:string = ""
+    pw = this.loginForm.value.password
+    this.http.findUserByMail(mail).subscribe(temp=>{
+      alert(temp)
+    })
   }
 }
