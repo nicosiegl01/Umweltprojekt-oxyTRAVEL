@@ -36,7 +36,7 @@ export class HTTPService {
 
   getAirportByName(airport: string, airport1: string){
     let url = "airport/findAirportsByName/";
-    return this.http.get<Airport>(url + airport + "/" + airport1);
+    return this.http.get<Airport[]>(this.path + url + airport + "/" + airport1);
   }
 }
 

@@ -16,7 +16,7 @@ public class AirportRepository implements PanacheRepository<Airport> {
     @Inject
     EntityManager em;
     public List<Airport> getAirports(String airport1, String airport2){
-        String sql = "SELECT a FROM Airport a WHERE a.name = :name1 OR a.name = :name2";
+        String sql = "SELECT a FROM Airport a WHERE a.shortName = :name1 OR a.shortName = :name2";
         TypedQuery q = em.createQuery(sql, Airport.class);
         q.setParameter("name1", airport1);
         q.setParameter("name2", airport2);

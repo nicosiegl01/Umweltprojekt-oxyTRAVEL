@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HTTPService} from "../http/http.service";
 import { stringify } from 'querystring';
+import { Airport } from '../Airport';
 
 @Component({
   selector: 'app-main',
@@ -24,6 +25,9 @@ export class DataComponent implements OnInit {
   arr_city:string = ""
   aiport:string = "";
   airport1: string = ""
+  airportArray: Airport[] = [];
+  arr_iaco:string = "";
+  dep_iaco:string = "";
 
   durationCar:string = ""   //hh:mm:ss
   wegAuto!:number         //in kilometer
@@ -34,17 +38,23 @@ export class DataComponent implements OnInit {
 
   distance!: number;
 
+  inputText: any = "";
+
   constructor(private http:HTTPService/*, private http2:AirportCreateService*/) {}
 
   ngOnInit(): void {
-    this.http.getAirportByName(this.aiport, this.airport1).subscribe(temp => {
+    /*this.http.getAirportByName(this.aiport, this.airport1).subscribe(temp => {
       let airports = temp;
       console.log(airports);
-    })
+    })*/
   }
 
-  getFlight(){
-    this.http.getFlightData("JU311").subscribe(temp=>{
+  getFlightWithNumber(){
+    this.getFlight(this.inputText);
+  }
+
+  getFlight(flightnumber: any){
+    this.http.getFlightData(flightnumber).subscribe(temp=>{
       console.error('Flug:')
       console.log(temp)
       this.departureCountry = temp.response.dep_country
@@ -58,8 +68,9 @@ export class DataComponent implements OnInit {
       this.deptTime = temp.response.dep_time
       this.dep_city = temp.response.dep_city
       this.arr_city = temp.response.arr_city
-      this.getTimeDifference()
-
+      this.arr_iaco = temp.response.arr_icao
+      this.dep_iaco = temp.response.dep_icao
+      console.log(this.departureStation);
       this.http.getCarRoute(this.dep_city,this.arr_city,options.shortest).subscribe(temp2=>{
         this.durationCar = temp2.route.formattedTime
         this.fuelUsed = temp2.route.fuelUsed
@@ -70,6 +81,16 @@ export class DataComponent implements OnInit {
         this.wegBicycle = temp3.route.distance * 1,609344
         this.durationBicycle = temp3.route.formattedTime
       })
+
+      this.http.getAirportByName(this.dep_iaco, this.arr_iaco).subscribe(airport1 => {
+        this.airportArray = airport1;
+        console.log(this.dep_iaco, this.arr_iaco);
+        console.log(this.airportArray[0].latitude);
+        console.log(this.airportArray[0].longitude);
+        console.log(this.airportArray[1].latitude);
+        console.log(this.airportArray[1].longitude);
+        this.getTimeDifference();
+      });   
     })
   }
 
@@ -83,8 +104,9 @@ export class DataComponent implements OnInit {
     var hrs = parseInt(String(Number(timeHours)));
     var min = Math.round((Number(timeHours)-hrs) * 60);
     var clocktime = hrs+' Hours '+min+' Minutes';
-    this.timeDiffStr = clocktime
-    this.getDistance(48, 14, -46, 168);
+    this.timeDiffStr = clocktime;
+    console.log(this.airport1);
+    this.getDistance(this.airportArray[0].latitude, this.airportArray[0].longitude, this.airportArray[1].latitude, this.airportArray[1].longitude);
     this.getEmissions();
   }
 

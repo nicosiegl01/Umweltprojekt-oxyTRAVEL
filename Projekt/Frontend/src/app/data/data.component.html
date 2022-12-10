@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <p>main works!</p>
-<button (click)="getFlight()">test</button>
+<button (click)="getFlight('AA6')">test</button>
 <p>From {{departureStation}} | {{departureCountry}}</p>
 <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
 <p>Dauer des Flugs: {{timeDiffStr}}</p>
@@ -20,5 +20,7 @@
 <p>Dauer: {{durationBicycle}} hh:mm:ss</p>
 <p>Weg: {{wegBicycle}}</p>
 
+<input id="Flugnummer" type="text" [(ngModel)]="inputText">
+<button (click)="getFlightWithNumber()">Submit</button>
 <app-footer></app-footer>
 
