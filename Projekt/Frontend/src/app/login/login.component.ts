@@ -9,11 +9,8 @@ import {HTTPService} from "../http/http.service";
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-
-  });
+  mail:string = '';
+  password:string = '';
   counter:number = 0
 
   constructor(private router: Router,private http:HTTPService) {}
@@ -21,21 +18,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get email() {
-    return this.loginForm.get('email');
-  }
-
-  get password() {
-    return this.loginForm.get('password');
-  }
-
   submit() {
     let mail:string = ""
-    mail = this.loginForm.value.email
+    mail = this.mail
     let pw:string = ""
-    pw = this.loginForm.value.password
-    this.http.findUserByMail(mail).subscribe(temp=>{
-      alert(temp)
+    pw = this.password
+    this.http.login(mail,pw).subscribe(temp=>{
+      console.log(temp)
+      if(temp != null){
+        this.router.navigate(['/'])
+      }
     })
   }
 }

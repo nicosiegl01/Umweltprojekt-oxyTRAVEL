@@ -6,20 +6,19 @@
     home
   </span>
 </a>
-
-<form onsubmit="return false;" class="loginForm">
+<form class="loginForm">
   <h1 class="loginText">LOGIN</h1>
   <div class="inputBox">
     <div class="form__group field">
-      <input type="input" class="form__field" placeholder="mustermail@gmail.com" name="mail" id='mail' required/>
+      <input [(ngModel)]="mail" type="input" class="form__field" placeholder="mustermail@gmail.com" name="mail" id='mail' required/>
       <label for="mail" class="form__label">E-Mail</label>
     </div>
     <br>
     <div class="form__group field">
-      <input type="input" class="form__field" placeholder="password" name="password" id='password' required/>
+      <input [(ngModel)]="password" type="input" class="form__field" placeholder="password" name="password" id='password' required/>
       <label for="password" class="form__label">Password</label>
     </div>
-    <input class="submitButtonLogin" type="submit" placeholder="Login">
+    <button (click)="submit()" class="submitButtonLogin" type="submit" placeholder="Login">Sign In</button>
     <p>Not registered yet? <a routerLink="../register" class="signUpLink">Sign Up here!</a></p>
   </div>
 </form>

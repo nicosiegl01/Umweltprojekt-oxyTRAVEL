@@ -52,7 +52,8 @@ export class HTTPService {
 
   login(mail:string, password:string){
     let url = this.path + "login/"+mail+"/"+password
-    return this.http.get(url)
+    console.log(url)
+    return this.http.get<Customer>(url)
   }
 
   findUserByMail(mail:string){
