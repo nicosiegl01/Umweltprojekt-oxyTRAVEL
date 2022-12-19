@@ -10822,5 +10822,12 @@ INSERT INTO APP.FLIGHTSEARCH (ID, flightNumber) VALUES (2, 'A3409');
 INSERT INTO APP.FLIGHTSEARCH (ID, flightNumber) VALUES (3, 'R3920');
 
 
+INSERT INTO APP.AIRPLANE (ID, airplaneType, fuel) VALUES (1, 'Airbus 320',4705.01);
+INSERT INTO APP.AIRPLANE (ID, airplaneType, fuel) VALUES (2, 'Boeing 737',4949.72);
+INSERT INTO APP.AIRPLANE (ID, airplaneType, fuel) VALUES (3, 'Boeing 757',6724.43);
+
+INSERT INTO APP.TREE (ID, treeType, consumption) VALUES (1, 'Buche',12.5);
+
+
 DROP SEQUENCE Hibernate_Sequence RESTRICT;
 CREATE SEQUENCE Hibernate_Sequence START WITH 100;
