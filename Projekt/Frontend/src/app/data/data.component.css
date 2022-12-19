@@ -1,0 +1,50 @@
+#flight{
+    height: 30vh;
+    width: 30%;
+    background-color: #8DC284;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    padding: 1%;
+    border: 3px solid #fff;
+}
+
+#car{
+    height: 30vh;
+    width: 30%;
+    background-color: #8DC284;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    padding: 1%;
+    border: 3px solid #fff;
+}
+
+#fahrrad{
+    height: 30vh;
+    width: 30%;
+    background-color: #8DC284;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    padding: 1%;
+    border: 3px solid #fff;
+}
+
+#input{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width: 10%;
+    padding: 1%;
+    border: none;
+}
+
+#button{
+    width: 10%;
+    padding: 0.9%;
+    background-color: #fff;
+    border: 3px solid #6D8B74;
+    color: #000;
+    margin-left: 1%;
+}

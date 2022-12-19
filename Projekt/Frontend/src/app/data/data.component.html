@@ -1,42 +1,31 @@
 <app-header></app-header>
 
-<<<<<<< HEAD
-<p>main works!</p>
-<button (click)="getFlight('AA6')">test</button>
-<p>From {{departureStation}} | {{departureCountry}}</p>
-<p>To {{arrivalStation}} | {{arrivalCountry}}</p>
-<p>Dauer des Flugs: {{timeDiffStr}}</p>
-=======
-<input placeholder="Flugnummer" [(ngModel)]="inputFlight">
->>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
+<input placeholder="Flugnummer" [(ngModel)]="inputFlight" id="input">
 
-<button [disabled]="inputFlight==''" (click)="getFlight()">test</button>
+<button [disabled]="inputFlight==''" (click)="getFlightWithNumber()" id="button">test</button>
 
-<div class="data" [hidden]="hideDetails">
-  <h1>Details for flight: {{lastSearch}}</h1>
-  <p>From {{departureStation}} | {{departureCountry}}</p>
-  <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
-  <p>Dauer des Flugs: {{timeDiffStr}}</p>
+<div class="data" style="display: flex; flex-direction: row; width: 90%; margin-top: 10%; margin-left: auto; margin-right: auto" [hidden]="hideDetails">
+  <div id="flight">
+    <h1>Details for flight: {{lastSearch}}</h1>
+    <p>From {{departureStation}} | {{departureCountry}}</p>
+    <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
+    <p>Dauer des Flugs: {{timeDiffStr}}</p>
+    <p>Distanz: {{distance}} km</p>
+    <p>Emissionen: {{emissions}} kg Co2</p>
+  </div>
 
-  <hr>
+  <div id="car">
+    <h1>Auto</h1>
+    <p>Dauer: {{durationCar | date: 'hh:mm:ss'}}</p>
+    <p>Weg: {{wegAuto}}</p>
+    <p>Sprit: {{fuelUsed}}</p>
+  </div>
 
-  <h1>Auto</h1>
-  <p>Dauer: {{durationCar | date: 'hh:mm:ss'}}</p>
-  <p>Weg: {{wegAuto}}</p>
-  <p>Sprit: {{fuelUsed}}</p>
-
-
-<<<<<<< HEAD
-<input id="Flugnummer" type="text" [(ngModel)]="inputText">
-<button (click)="getFlightWithNumber()">Submit</button>
-=======
-  <hr>
-
-  <h1>Fahrrad</h1>
-  <p>Dauer: {{durationBicycle}} hh:mm:ss</p>
-  <p>Weg: {{wegBicycle}}</p>
+  <div id="fahrrad">
+    <h1>Fahrrad</h1>
+    <p>Dauer: {{durationBicycle}} hh:mm:ss</p>
+    <p>Weg: {{wegBicycle}}</p>
+  </div>
 
 </div>
->>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
 <app-footer></app-footer>
-

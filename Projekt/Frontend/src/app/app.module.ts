@@ -12,12 +12,7 @@ import { UpdateDatabaseComponent } from './update-database/update-database.compo
 import { AccountComponent } from './account/account.component';
 import { TeamComponent } from './team/team.component';
 import { LoginComponent } from './login/login.component';
-<<<<<<< HEAD
-import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-=======
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
->>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -58,14 +53,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-<<<<<<< HEAD
-=======
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
->>>>>>> b614099b0c8d275cbf0aa7ff29229291f2439845
     FormsModule
   ],
   providers: [],

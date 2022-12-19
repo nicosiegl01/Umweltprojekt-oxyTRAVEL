@@ -25,6 +25,8 @@ export class HTTPService {
     return this.http.get<MapQuestModel>(url)
   }
 
+  //let url = "http://www.mapquestapi.com/directions/v2/route?key=yPOsANY3nbgYOult8LRSLLHkbZfjXBiP&from="+"Linz Hoersching Airport"+"&to="+"Frankfurt am Main Airport"+"&routeType="+options
+  //let url = "http://www.mapquestapi.com/directions/v2/route?key=yPOsANY3nbgYOult8LRSLLHkbZfjXBiP&from="+"Linz Hoersching Airport"+"&to="+"Frankfurt am Main Airport"+"&routeType=bicycle"
   getBicycleRoute(loc1:string, loc2:string){
     let url = "http://www.mapquestapi.com/directions/v2/route?key=yPOsANY3nbgYOult8LRSLLHkbZfjXBiP&from="+loc1+"&to="+loc2+"&routeType=bicycle"
     return this.http.get<MapQuestModel>(url)
