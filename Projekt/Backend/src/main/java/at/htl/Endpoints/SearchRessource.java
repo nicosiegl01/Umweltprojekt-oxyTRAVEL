@@ -20,7 +20,7 @@ public class SearchRessource {
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     public void getCount(FlightSearchDTO flight){
-        FlightSearch f = new FlightSearch(flight.flightnumber);
+        FlightSearch f = new FlightSearch(flight.flightnumber,flight.timestamp_added,flight.customer);
         this.searchRepository.persist(f);
     }
 
@@ -37,4 +37,6 @@ public class SearchRessource {
     public Long getCounter(){
         return this.searchRepository.getCount();
     }
+
+
 }

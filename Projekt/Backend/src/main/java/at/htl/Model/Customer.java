@@ -12,4 +12,12 @@ import java.io.Serializable;
 public class Customer extends PanacheEntity implements Serializable {
     public String mail;
     public String password;
+
+    public Customer(String mail, String password) {
+        this.mail = mail;
+        this.password = password;
+    }
+
+    public Customer() {
+    }
 }
