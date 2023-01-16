@@ -29,11 +29,11 @@ POST http://localhost:8081/api/search
 Content-Type: application/json
 
 {
-  "flightnumber": "FRQ123",
-  "timestamp_added": "2022-12-22",
+  "flightnumber": "abc12",
+  "timestamp_added": "2022-12-16",
   "customer": {
     "id": 100,
-    "mail": "test@mail.com",
+    "mail": "test@mail.at",
     "password": "test"
   }
 }
@@ -50,3 +50,18 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8081/api/findByMail/test@mail.com
+
+###
+POST http://localhost:8081/api/create
+Content-Type: application/json
+
+{
+  "mail": "test@mail.at",
+  "password": "abc"
+}
+
+###
+GET http://localhost:8081/api/search/findByUser/test@mail.at
+
+<> 2023-01-16T132909.200.json
+<> 2023-01-16T132551.500.json

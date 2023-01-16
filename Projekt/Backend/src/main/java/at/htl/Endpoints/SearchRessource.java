@@ -38,5 +38,10 @@ public class SearchRessource {
         return this.searchRepository.getCount();
     }
 
-
+    @GET
+    @Path("/findByUser/{mail}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<FlightSearch> findByUser(@PathParam("mail") String mail){
+        return this.searchRepository.getSearchesByUser(mail);
+    }
 }

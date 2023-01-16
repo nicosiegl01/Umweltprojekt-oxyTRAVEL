@@ -29,7 +29,7 @@ public class CustomerRessource {
     @Produces(MediaType.APPLICATION_JSON)
     public Customer loginCustomer(@PathParam("mail") String mail,
                                  @PathParam("password") String password){
-        return this.customerRepository.findByMail(mail, password);
+        return this.customerRepository.findByMail(mail);
     }
 
     @POST

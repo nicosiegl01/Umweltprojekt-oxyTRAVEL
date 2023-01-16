@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {HTTPService} from "../http/http.service";
 import {Router} from "@angular/router";
+// @ts-ignore
+import * as bcrypt from "bcryptjs";
 
 @Component({
   selector: 'app-sign-up',
@@ -24,9 +26,13 @@ export class SignUpComponent {
     mail = this.addressForm.value.mail
     let pw:string = ""
     pw = this.addressForm.value.password
-    console.log(mail + " " + pw)
-    this.http.createUser(mail,pw).subscribe(temp=>{
+    var salt = bcrypt.genSaltSync(12);
+    var hash = bcrypt.hashSync(pw, salt);
+    console.log(mail + " " + hash)
+    this.http.createUser(mail,hash).subscribe(temp=>{
+      console.log(temp)
       this.router.navigate(["login"])
+
     })
   }
 }

@@ -41,11 +41,10 @@ public class CustomerRepository implements PanacheRepository<Customer> {
         }
     }
 
-    public Customer findByMail(String mail, String password){
-        String jpql = "SELECT c FROM Customer c where c.mail=:name and c.password=:password";
+    public Customer findByMail(String mail){
+        String jpql = "SELECT c FROM Customer c where c.mail=:name";
         TypedQuery q = em.createQuery(jpql,Customer.class);
         q.setParameter("name",mail);
-        q.setParameter("password",password);
         return (Customer) q.getSingleResult();
     }
 }

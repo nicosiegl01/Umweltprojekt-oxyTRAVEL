@@ -5,6 +5,7 @@ import {FlightDataModule} from "../interfaces/FlightData.module";
 import {MapQuestModel} from "../interfaces/MapQuest.model";
 import { Airport } from '../Airport';
 import {Customer} from "../interfaces/Customer.modle";
+import {FlightSearch} from "../interfaces/FlightSearch.model";
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,7 @@ export class HTTPService {
 
   createUser(mail:string,password:string){
     let url = this.path + "create";
+    console.log(url)
     return this.http.post(url, {
       "mail":mail,
       "password":password
@@ -57,7 +59,7 @@ export class HTTPService {
   }
 
   findUserByMail(mail:string){
-    let url = this.path + "/findByMail/"+mail
+    let url = "http://localhost:8081/api/findByMail/"+mail
     return this.http.get<Customer>(url)
 
   }
@@ -73,6 +75,13 @@ export class HTTPService {
       "flightnumber": "FRQ123"
     })
   }
+
+  getSearchesByUser(mail:string){
+    let url = this.path + "search/findByUser/"+mail
+    return this.http.get<FlightSearch[]>(url)
+  }
+
+
 }
 
 enum options {
