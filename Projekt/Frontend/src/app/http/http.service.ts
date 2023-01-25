@@ -81,6 +81,22 @@ export class HTTPService {
     return this.http.get<FlightSearch[]>(url)
   }
 
+  addFlightNumberToAccount(c:Customer,flight:string){
+    let url = "http://localhost:8081/api/search"
+    var todayDate = new Date().toISOString().slice(0, 10);
+    console.log(c )
+    console.log(flight)
+    console.log(todayDate)
+    return this.http.post(url,{
+      "flightnumber": flight,
+      "timestamp_added": todayDate,
+      "customer": {
+        "id": c.id,
+        "mail": c.mail,
+        "password": c.password
+      }
+    })
+  }
 
 }
 

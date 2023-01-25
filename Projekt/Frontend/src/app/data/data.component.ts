@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { HTTPService } from "../http/http.service";
 import { stringify } from 'querystring';
 import { Airport } from '../Airport';
+import {Customer} from "../interfaces/Customer.modle";
 
 @Component({
   selector: 'app-main',
@@ -77,6 +78,17 @@ export class DataComponent implements OnInit {
         this.durationCar = temp2.route.formattedTime
         this.fuelUsed = temp2.route.fuelUsed
         this.wegAuto = temp2.route.distance * 1, 609344
+        alert(this.wegAuto)
+        if(this.wegAuto != null){
+          let user: Customer = JSON.parse(localStorage.getItem("my_user")!)
+          console.log(user)
+          if(user!=null){
+            alert('in if')
+            this.http.addFlightNumberToAccount(user, this.inputFlight).subscribe()
+
+          }
+          alert('ahhh')
+        }
         console.log(temp2.route.formattedTime)
         console.log(temp2.route.fuelUsed)
         console.log(temp2.route.distance * 1, 609344)
