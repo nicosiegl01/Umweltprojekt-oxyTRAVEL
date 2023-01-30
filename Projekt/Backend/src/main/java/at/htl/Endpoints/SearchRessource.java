@@ -45,8 +45,10 @@ public class SearchRessource {
     }
 
     @GET
+    @Transactional
     @Path("/flight/{iata}")
     public void getFlightNumber(@PathParam("iata") String flight){
-
+        FlightSearch f = new FlightSearch(flight);
+        this.searchRepository.persist(f);
     }
 }
