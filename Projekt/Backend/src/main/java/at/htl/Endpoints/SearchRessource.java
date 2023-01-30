@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.beans.Transient;
 import java.util.List;
 
 @Path("api/search")
@@ -20,7 +19,7 @@ public class SearchRessource {
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
     public void getCount(FlightSearchDTO flight){
-        FlightSearch f = new FlightSearch(flight.flightnumber,flight.timestamp_added,flight.customer);
+        FlightSearch f = new FlightSearch(flight.flightnumber,flight.timestamp_added, flight.co2,flight.trees,flight.customer);
         this.searchRepository.persist(f);
     }
 

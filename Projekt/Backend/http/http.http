@@ -31,10 +31,12 @@ Content-Type: application/json
 {
   "flightnumber": "abc12",
   "timestamp_added": "2022-12-16",
+  "co2": 100.2,
+  "trees": 7,
   "customer": {
-    "id": 100,
-    "mail": "test@mail.at",
-    "password": "test"
+    "id": 1,
+    "mail": "sieglnico@gmail.com",
+    "password": "passme"
   }
 }
 
