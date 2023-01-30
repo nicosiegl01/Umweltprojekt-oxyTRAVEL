@@ -11,6 +11,45 @@
     <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
     <p>Dauer des Flugs: {{timeDiffStr}}</p>
     <p>Distanz: {{distance}} km</p>
+    <p>Emissionen: {{emissions}} tonnen Co2</p>
+    <p>Bäume: {{trees}} Buchen</p>
+  </div>
+
+  <div id="car">
+    <h1>Auto</h1>
+    <p>Dauer: {{durationCar}}</p>
+    <p>Weg: {{wegAuto}}</p>
+    <p>Sprit: {{fuelUsed}}</p>
+    <p>Emissionen: {{carEmissions}}</p>
+    <p>Bäume: {{carEmissionTrees}}</p>
+  </div>
+
+  <div id="fahrrad">
+    <h1>Fahrrad</h1>
+    <p>Dauer: {{durationBicycle}}</p>
+    <p>Weg: {{wegBicycle}}</p>
+  </div>
+
+  <h3>{{tree.treeType}}</h3>
+  <h3>Consumption {{tree.consumption}}</h3>
+</div>
+<div class="chart-container">
+  <canvas id="MyChart" >{{ chart }}</canvas>
+</div>
+<!--
+<app-header></app-header>
+
+<input placeholder="Flugnummer" [(ngModel)]="inputFlight" id="input">
+
+<button [disabled]="inputFlight==''" (click)="getFlightWithNumber()" id="button">test</button>
+
+<div class="data" style="display: flex; flex-direction: row; width: 90%; margin-top: 10%; margin-left: auto; margin-right: auto" [hidden]="hideDetails">
+  <div id="flight">
+    <h1>Details for flight: {{lastSearch}}</h1>
+    <p>From {{departureStation}} | {{departureCountry}}</p>
+    <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
+    <p>Dauer des Flugs: {{timeDiffStr}}</p>
+    <p>Distanz: {{distance}} km</p>
     <p>Emissionen: {{emissions}} kg Co2</p>
   </div>
 
@@ -28,4 +67,8 @@
   </div>
 
 </div>
+<div class="chart-container">
+  <canvas id="MyChart" >{{ chart }}</canvas>
+</div>
 <app-footer></app-footer>
+-->

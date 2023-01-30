@@ -6,6 +6,7 @@ import {MapQuestModel} from "../interfaces/MapQuest.model";
 import { Airport } from '../Airport';
 import {Customer} from "../interfaces/Customer.modle";
 import {FlightSearch} from "../interfaces/FlightSearch.model";
+import {Tree} from "../interfaces/Tree.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class HTTPService {
   }
 
   getCarRoute(loc1:string, loc2:string, options:options){
-    let url = "http://www.mapquestapi.com/directions/v2/route?key=yPOsANY3nbgYOult8LRSLLHkbZfjXBiP&from="+loc1+"&to="+loc2+"&routeType="+options
+    let url = "http://www.mapquestapi.com/directions/v2/route?key=yPOsANY3nbgYOult8LRSLLHkbZfjXBiP&from="+loc1+"&to="+loc2+"&routeType=fastest"//+options
     return this.http.get<MapQuestModel>(url)
   }
 
@@ -79,6 +80,11 @@ export class HTTPService {
   getSearchesByUser(mail:string){
     let url = this.path + "search/findByUser/"+mail
     return this.http.get<FlightSearch[]>(url)
+  }
+
+  getTree(){
+    let url = this.path + "tree/getTree"
+    return this.http.get<Tree>(url);
   }
 
   addFlightNumberToAccount(c:Customer,flight:string,co2:number,trees:number){

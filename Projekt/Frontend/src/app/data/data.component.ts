@@ -4,6 +4,8 @@ import { HTTPService } from "../http/http.service";
 import { stringify } from 'querystring';
 import { Airport } from '../Airport';
 import {Customer} from "../interfaces/Customer.modle";
+import { Chart, registerables } from 'chart.js';
+import {Tree} from "../interfaces/Tree.model";
 
 @Component({
   selector: 'app-main',
@@ -40,20 +42,90 @@ export class DataComponent implements OnInit {
   distance!: number;
   hideDetails: boolean = true
   inputFlight: string = ""
+  public chart:any;
 
-  constructor(private http: HTTPService) { }
+  tree!: Tree
+  trees: number = 0;
+  //in Kilogramm
+  carEmissionPerLiter: number = 2.37;
+  carEmissionTrees!: number;
+  carEmissions!: number;
+
+
+  constructor(private http: HTTPService) {
+    Chart.register(...registerables);
+  }
 
   ngOnInit(): void {
-    /*this.http.getAirportByName(this.aiport, this.airport1).subscribe(temp => {
-      let airports = temp;
-      console.log(airports);
-    })*/
+
   }
 
   getFlightWithNumber() {
     console.log(this.inputFlight);
     this.getFlight(this.inputFlight);
   }
+
+  /*getFlight(flightnumber: any) {
+    this.http.getFlightData(flightnumber).subscribe(temp => {
+      console.error('Flug:')
+      this.hideDetails = false;
+      console.log(temp)
+      this.departureCountry = temp.response.dep_country
+      this.arrivalCountry = temp.response.arr_country
+      this.departureStation = temp.response.dep_name
+      this.arrivalStation = temp.response.arr_name
+      this.status = temp.response.status
+      this.arrTime_utc = temp.response.arr_time_utc
+      this.deptTime_utc = temp.response.dep_time_utc
+      this.arrTime = temp.response.arr_time
+      this.deptTime = temp.response.dep_time
+      this.dep_city = temp.response.dep_city
+      this.arr_city = temp.response.arr_city
+      this.arr_iaco = temp.response.arr_icao
+      this.dep_iaco = temp.response.dep_icao
+      console.log(this.departureStation);
+      this.http.getCarRoute(this.dep_city, this.arr_city, options.shortest).subscribe(temp2 => {
+
+        //this.durationCar = temp2.route.formattedTime
+        //this.fuelUsed = temp2.route.fuelUsed
+        //this.wegAuto = temp2.route.distance * 1, 609344
+
+        this.durationCar = temp2.route.formattedTime
+        this.wegAuto = temp2.route.distance * 1.609344;
+        //7.7 Liter pro 100 Kilometer
+        this.fuelUsed = this.wegAuto * 0.07;
+        console.log(this.durationCar)
+        console.log(this.fuelUsed)
+        console.log(this.wegAuto)
+        this.getTree();
+        if(this.wegAuto != null){
+          let user: Customer = JSON.parse(localStorage.getItem("my_user")!)
+          console.log(user)
+          if(user!=null){
+            this.http.addFlightNumberToAccount(user, this.inputFlight,this.emissions,this.trees).subscribe()
+          }
+        }
+        console.log(temp2.route.formattedTime)
+        console.log(temp2.route.fuelUsed)
+        console.log(temp2.route.distance * 1.609344)
+      })
+
+      this.http.getBicycleRoute(this.dep_city, this.arr_city).subscribe(temp3 => {
+        this.wegBicycle = temp3.route.distance * 1.609344
+        this.durationBicycle = temp3.route.formattedTime
+      })
+
+      this.http.getAirportByName(this.dep_iaco, this.arr_iaco).subscribe(airport1 => {
+        this.airportArray = airport1;
+        console.log(this.dep_iaco, this.arr_iaco);
+        console.log(this.airportArray[0].latitude);
+        console.log(this.airportArray[0].longitude);
+        console.log(this.airportArray[1].latitude);
+        console.log(this.airportArray[1].longitude);
+        this.getTimeDifference();
+      });
+    })
+  }*/
 
   getFlight(flightnumber: any) {
     this.http.getFlightData(flightnumber).subscribe(temp => {
@@ -76,22 +148,24 @@ export class DataComponent implements OnInit {
       console.log(this.departureStation);
       this.http.getCarRoute(this.dep_city, this.arr_city, options.shortest).subscribe(temp2 => {
         this.durationCar = temp2.route.formattedTime
-        this.fuelUsed = temp2.route.fuelUsed
-        this.wegAuto = temp2.route.distance * 1, 609344
+        this.wegAuto = temp2.route.distance * 1.609344;
+        //7.7 Liter pro 100 Kilometer
+        this.fuelUsed = this.wegAuto * 0.07;
+        console.log(this.durationCar)
+        console.log(this.fuelUsed)
+        console.log(this.wegAuto)
+        this.getTree();
         if(this.wegAuto != null){
           let user: Customer = JSON.parse(localStorage.getItem("my_user")!)
           console.log(user)
           if(user!=null){
-            this.http.addFlightNumberToAccount(user, this.inputFlight,this.emissions,111).subscribe()
+            this.http.addFlightNumberToAccount(user, this.inputFlight,this.emissions,this.trees).subscribe()
           }
         }
-        console.log(temp2.route.formattedTime)
-        console.log(temp2.route.fuelUsed)
-        console.log(temp2.route.distance * 1, 609344)
       })
 
       this.http.getBicycleRoute(this.dep_city, this.arr_city).subscribe(temp3 => {
-        this.wegBicycle = temp3.route.distance * 1, 609344
+        this.wegBicycle = temp3.route.distance * 1.609344
         this.durationBicycle = temp3.route.formattedTime
       })
 
@@ -140,9 +214,65 @@ export class DataComponent implements OnInit {
   }
 
   getEmissions() {
-    this.emissions = (this.distance / 0.53996) * 6.27 * 3.15 / 144;
-    this.emissions = Math.floor(this.emissions);
+    if(this.distance <= 1852){
+      //9% Umwegfaktor (kreisen, wetterbedinungen usw.);
+      //A320
+      let flightdistance = this.distance * 1.09;
+      let emmissionShortDistance = (flightdistance * 0.03 * 0.8 * 3.15) / 195
+      this.emissions = emmissionShortDistance;
+      //this.emissions = (flightdistance / 0.53996) * 6.27 * 3.15 / 144;
+    }else if(this.distance > 1852){
+      let flightdistance = this.distance * 1.09;
+      let emmissionLongDistance = (flightdistance * 0.041 * 0.8 * 3.15) / 297;
+      this.emissions = emmissionLongDistance;
+    }
+    //this.emissions = (0.04 * 3.15 * this.distance)/144;
     console.log(this.emissions.toFixed(2) + "kg Co2");
+  }
+
+
+    getTree(){
+    console.log('getTree')
+     this.http.getTree().subscribe(temp => {
+      this.tree = temp;
+      console.log(this.tree);
+      console.log(this.emissions);
+      this.trees = Number(this.emissions * 1000) / Number(this.tree.consumption);
+      this.carEmissions = this.fuelUsed * this.carEmissionPerLiter
+      this.carEmissionTrees = this.carEmissions / Number(this.tree.consumption);
+      console.log(this.carEmissionTrees);
+      console.log(this.trees);
+      this.chart = new Chart("MyChart", {
+        type: "line", //this denotes tha type of chart
+
+        data: {// values on X-Axis
+          labels: ['1er Flug', '2er Flug', '3er Flug'],
+          datasets: [
+            {
+              label: "Co2",
+              data: [this.emissions, '400', '50'],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+            },
+            {
+              label: "Bäume",
+              data: [this.trees, '20', '3'],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+            }
+          ]
+        },
+        options: {
+          aspectRatio: 2.5
+        }
+      });
+    });
   }
 }
 

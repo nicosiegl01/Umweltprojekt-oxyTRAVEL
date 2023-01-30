@@ -3,5 +3,7 @@
 <p *ngFor="let s of searches">{{s.flightNumber}} Flugnummer</p>
 <p *ngFor="let s of searches">{{s.co2}} co2</p>
 <p *ngFor="let s of searches">{{s.trees}} Bäume</p>
-
+<div class="chart-container">
+  <canvas id="MyChart" >{{ chart }}</canvas>
+</div>
 <app-footer></app-footer>
