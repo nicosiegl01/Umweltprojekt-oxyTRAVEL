@@ -43,4 +43,10 @@ public class SearchRessource {
     public List<FlightSearch> findByUser(@PathParam("mail") String mail){
         return this.searchRepository.getSearchesByUser(mail);
     }
+
+    @GET
+    @Path("/flight/{iata}")
+    public void getFlightNumber(@PathParam("iata") String flight){
+
+    }
 }

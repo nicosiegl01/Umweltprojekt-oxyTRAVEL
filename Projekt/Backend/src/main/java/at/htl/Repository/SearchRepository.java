@@ -27,4 +27,6 @@ public class SearchRepository implements PanacheRepository<FlightSearch> {
         q.setParameter("mail",mail);
         return q.getResultList();
     }
+
+
 }
