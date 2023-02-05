@@ -48,3 +48,12 @@
     color: #000;
     margin-left: 1%;
 }
+
+.left{
+    float: left;
+  width: 50%;
+}
+.right{
+    float: right;
+  width: 50%;
+}

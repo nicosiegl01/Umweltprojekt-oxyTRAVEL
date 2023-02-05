@@ -16,6 +16,7 @@ export class LandingPageComponent implements OnInit {
   @ViewChild('canvas')
   canvas!: ElementRef;
 
+
   constructor(private http:HTTPService) { }
 
   ngOnInit(): void {
