@@ -106,6 +106,12 @@ export class HTTPService {
     })
   }
 
+  sendBase64GetFlightnumber(base64:string){
+    //TODO: change localhost to server
+    let url = "localhost"+base64
+    return this.http.get<FlightSearch[]>(url)
+  }
+
 }
 
 enum options {

@@ -33,4 +33,6 @@ public class AirportRepository implements PanacheRepository<Airport> {
             return null;
         }
     }
+
+    
 }

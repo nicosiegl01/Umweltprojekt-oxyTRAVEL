@@ -13,4 +13,5 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+<input id="file" type="file" (change)="onFileChanged($event)" #fileInput/>
+<canvas id="canvas" #canvas></canvas>
