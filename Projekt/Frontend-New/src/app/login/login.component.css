@@ -1,6 +1,5 @@
-
 * {
-  color: #fff;
+  color: black;
   box-sizing: border-box;
 }
 
@@ -13,7 +12,7 @@ body.mat-typography {
 }
 
 .loginLink:hover {
-  background-color: #fff;
+  background-color: black;
 }
 
 .loginLink {
@@ -23,8 +22,8 @@ body.mat-typography {
   height: 5.25vh;
   padding-right: 0.05vw;
   border-radius: 30%;
-  background-color: #fff;
-  color: #fff;
+  background-color: var(--lightGreen2);
+  color: black;
   transition: background-color 0.1s ease-in;
   cursor: pointer;
 }
@@ -40,7 +39,7 @@ body.mat-typography {
   height: 45vh;
   margin: 0 auto;
   margin-top: 27.5vh;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 25px;
 }
 
@@ -61,10 +60,10 @@ body.mat-typography {
   font-family: inherit;
   width: 20vw;
   border: 0;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid black;
   outline: 0;
   font-size: 1rem;
-  color: #fff;
+  color: black;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
@@ -84,7 +83,7 @@ body.mat-typography {
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: #fff;
+  color: black;
 }
 
 .form__field:focus {
@@ -98,7 +97,7 @@ body.mat-typography {
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: #fff;
+  color: var(--blue1);
   font-weight: 700;
 }
 
@@ -111,9 +110,9 @@ body.mat-typography {
   width: 10vw;
   height: 5vh;
   margin-left: 4vw;
-  background-color: #fff;
+  background-color: var(--blue1);
   border: none;
-  color: #fff;
+  color: black;
   padding: 1vh 2vh 1vh 2vh;
   text-align: center;
   text-decoration: none;
@@ -123,16 +122,15 @@ body.mat-typography {
   border-radius: 20px;
   margin-top: 9.5vh;
   margin-bottom: 2vh;
-  transition: background-color, color linear 0.2s;
+  transition: background-color, linear 0.2s;
 }
 
 .submitButtonLogin:hover{
-  color: #fff;
-  background-color: #fff;
+  background-color: #289FBD;
 }
 
 .signUpLink {
-  color: #fff;
+  color: #289FBD;
 }
 
 .loginText {

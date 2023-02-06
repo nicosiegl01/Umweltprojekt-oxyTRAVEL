@@ -249,3 +249,9 @@
   right: 2vw;
 }
 
+#five{
+  background-image:
+    linear-gradient(hsla(215,30%,70%,0.9) 0%, #219EBC 80%, hsla(215,30%,70%,0.9) 100%),
+    linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
+}
+

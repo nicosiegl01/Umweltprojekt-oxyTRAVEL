@@ -17,6 +17,7 @@ public class CustomerRepository implements PanacheRepository<Customer> {
     @Inject
     EntityManager em;
 
+
     public Customer findEmail(String mail){
         String jpql = "SELECT c FROM Customer c where c.mail=:mail";
         TypedQuery q = em.createQuery(jpql,Customer.class);

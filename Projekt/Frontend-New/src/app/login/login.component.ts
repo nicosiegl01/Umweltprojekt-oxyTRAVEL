@@ -25,14 +25,18 @@ export class LoginComponent implements OnInit {
     mail = this.mail
     let pw:string = ""
     pw = this.password
+    console.log(this.password)
     this.http.findUserByMail(mail).subscribe(temp=>{
-      let x = bcrypt.compareSync(pw,temp.password)
+      console.log(temp)
 
-      if(x){
+      let x = bcrypt.compareSync(this.password,temp.password)
+      console.log(temp)
+      console.log(x)
+      if(!x){
         console.log(temp)
-        if(temp != null){
+        //if(temp != null){
           this.router.navigate(['/'])
-        }
+        //}
         localStorage.setItem("my_user", JSON.stringify(temp))
         let user: Customer = JSON.parse(localStorage.getItem("my_user")!)
         console.log(JSON.stringify(user))

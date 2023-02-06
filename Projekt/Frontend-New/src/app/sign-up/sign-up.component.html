@@ -1,1 +1,56 @@
-<p>sign-up works!</p>
+```<!-- <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Sign Up</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mail Adress" formControlName="mail">
+            <mat-error *ngIf="addressForm.controls['mail'].hasError('required')">
+              Mail adress is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="!addressForm.valid" mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+
+</form> -->
+
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
+<a class="loginLink" routerLink="">
+  <span class="material-symbols-outlined">
+    home
+  </span>
+</a>
+<form class="loginForm">
+  <h1 class="loginText">SIGN-UP</h1>
+  <div class="inputBox">
+    <div class="form__group field">
+      <input [(ngModel)]="mail" type="input" class="form__field" placeholder="mustermail@gmail.com" name="mail" id='mail' required/>
+      <label for="mail" class="form__label">E-Mail</label>
+    </div>
+    <br>
+    <div class="form__group field">
+      <input [(ngModel)]="password" type="password" class="form__field" placeholder="password" name="password" id='password' required/>
+      <label for="password" class="form__label">Password</label>
+    </div>
+    <button (click)="submit()" class="submitButtonLogin" type="submit" placeholder="Login">Sign Up</button>
+  </div>
+</form>
+```

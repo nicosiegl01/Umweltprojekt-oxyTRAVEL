@@ -13,7 +13,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const appRoutes: Routes = [
   { path: "", component: MainPageComponent },
   { path: "login", component: LoginComponent },
-  //{ path: "register", component: SignUpComponent },
+  { path: "register", component: SignUpComponent },
 ];
 
 

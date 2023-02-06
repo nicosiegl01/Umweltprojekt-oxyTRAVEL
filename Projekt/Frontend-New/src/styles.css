@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.03vw;
+}
+
+:root {
+  --pink1: #F06B6B;
+  --pink2: #b75353;
+  --blue1: #85aecc;
+  --backgroundBeige: #F5EFE6;
+  --lightGreen1: #8DC284;
+  --lightGreen2: #6D8B74;
+  --darkgreen1: #386543;
+}
+
+p {
+  font-size: 2vh;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+.form-container {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+
+  background: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body {
+  background-image:
+    linear-gradient(hsla(215,30%,70%,0.9) 0%, #219EBC 80%, hsla(215,30%,70%,0.9) 100%),
+    linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
+}

@@ -12,13 +12,13 @@
       <div id="searchFlightBox">
         <input placeholder="Flugnummer" [(ngModel)]="inputFlight" id="input">
         <button [disabled]="inputFlight==''" (click)="getFlightWithNumber()" id="button">Search</button>
+      </div>
         <div class="right">
           <input id="image" type="file" (change)="onFileChanged($event)" #fileInput/>
           <!--<canvas id="canvas" #canvas></canvas>-->
           <h3>{{statusOfImageUpload}}</h3>
         </div>
       </div>
-    </div>
     <div class="subSectionHead1">
     </div>
     <div class="subSectionHead2">
@@ -99,14 +99,10 @@
     </div>
   </div>
   <div class="section" id="five">
-    <div class="subSection1"><div class="left"></div>
-      <div class="right">
-        <input id="file" type="file" (change)="onFileChanged($event)" #fileInput/>
-        <!--<canvas id="canvas" #canvas></canvas>-->
-        <h3>{{statusOfImageUpload}}</h3>
-      </div>
-    </div>
-    <div class="subSection2"></div>
+
+    <canvas id="MyChart" >{{ chart }}</canvas>
+
+
 
     <div class="navigationButtons" id="navigationFive">
       <span style="font-size: 7vh" class="material-icons"><a href="#four">expand_less</a></span>
