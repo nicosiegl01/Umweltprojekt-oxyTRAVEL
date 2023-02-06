@@ -1,10 +1,10 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { HTTPService } from "../http/http.service";
-import { stringify } from 'querystring';
-import { Airport } from '../Airport';
+import {HttpClient} from "@angular/common/http";
+import {HTTPService} from "../http/http.service";
+import {stringify} from 'querystring';
+import {Airport} from '../Airport';
 import {Customer} from "../interfaces/Customer.modle";
-import { Chart, registerables } from 'chart.js';
+import {Chart, registerables} from 'chart.js';
 import {Tree} from "../interfaces/Tree.model";
 
 @Component({
@@ -42,7 +42,7 @@ export class DataComponent implements OnInit {
   distance!: number;
   hideDetails: boolean = true
   inputFlight: string = ""
-  public chart:any;
+  public chart: any;
 
   tree!: Tree
   trees: number = 0;
@@ -53,9 +53,9 @@ export class DataComponent implements OnInit {
 
   //Variablen für Imageupload
   img: HTMLImageElement = new Image();
-  Imageloaded:boolean = false;
-  modelvalue!:any
-  type:string = ""
+  Imageloaded: boolean = false;
+  modelvalue!: any
+  type: string = ""
   statusOfImageUpload: string = "NotUploaded"
 
   @ViewChild('canvas')
@@ -165,11 +165,11 @@ export class DataComponent implements OnInit {
         console.log(this.fuelUsed)
         console.log(this.wegAuto)
         this.getTree();
-        if(this.wegAuto != null){
+        if (this.wegAuto != null) {
           let user: Customer = JSON.parse(localStorage.getItem("my_user")!)
           console.log(user)
-          if(user!=null){
-            this.http.addFlightNumberToAccount(user, this.inputFlight,this.emissions,this.trees).subscribe()
+          if (user != null) {
+            this.http.addFlightNumberToAccount(user, this.inputFlight, this.emissions, this.trees).subscribe()
           }
         }
       })
@@ -224,14 +224,14 @@ export class DataComponent implements OnInit {
   }
 
   getEmissions() {
-    if(this.distance <= 1852){
+    if (this.distance <= 1852) {
       //9% Umwegfaktor (kreisen, wetterbedinungen usw.);
       //A320
       let flightdistance = this.distance * 1.09;
       let emmissionShortDistance = (flightdistance * 0.03 * 0.8 * 3.15) / 195
       this.emissions = emmissionShortDistance;
       //this.emissions = (flightdistance / 0.53996) * 6.27 * 3.15 / 144;
-    }else if(this.distance > 1852){
+    } else if (this.distance > 1852) {
       let flightdistance = this.distance * 1.09;
       let emmissionLongDistance = (flightdistance * 0.041 * 0.8 * 3.15) / 297;
       this.emissions = emmissionLongDistance;
@@ -241,9 +241,9 @@ export class DataComponent implements OnInit {
   }
 
 
-    getTree(){
+  getTree() {
     console.log('getTree')
-     this.http.getTree().subscribe(temp => {
+    this.http.getTree().subscribe(temp => {
       this.tree = temp;
       console.log(this.tree);
       console.log(this.emissions);
@@ -285,9 +285,7 @@ export class DataComponent implements OnInit {
     });
   }
 
-  transformDate(){
-
-
+  transformDate() {
 
 
   }
@@ -322,7 +320,7 @@ export class DataComponent implements OnInit {
     ctx.drawImage(this.img, 0, 0);
   }
 
-  async imageUpload(event:any) {
+  async imageUpload(event: any) {
     /*
     this.showBtn = true
     var file = event.target.files.length;
@@ -355,27 +353,24 @@ export class DataComponent implements OnInit {
 
   }
 
-  handleImageLoad()
-  {
+  handleImageLoad() {
     this.Imageloaded = true;
   }
 
-  async onSubmit()
-  {
+  async onSubmit() {
     //var Image = this.profileImage; //get Image Base64
     let temp = this.modelvalue.split(",")
     let temp2 = temp[0].slice(5).split(";")
     this.type = temp2[0]
 
 
-
     //console.log(Image)
 
     let str = temp[1]
     //TODO: send to python-script
-    /*this.http.sendBase64GetFlightnumber(str).subscribe(temp => {
+    this.http.sendBase64GetFlightnumber(str).subscribe(temp => {
       console.log(temp)
-    });*/
+    });
 
   }
 }
