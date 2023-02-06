@@ -3,10 +3,11 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Flight} from "../interfaces/Flight.module";
 import {FlightDataModule} from "../interfaces/FlightData.module";
 import {MapQuestModel} from "../interfaces/MapQuest.model";
-import { Airport } from '../Airport';
+import { Airport } from '../interfaces/Airport';
 import {Customer} from "../interfaces/Customer.modle";
 import {FlightSearch} from "../interfaces/FlightSearch.model";
 import {Tree} from "../interfaces/Tree.model";
+import {FlightnoModel} from "../interfaces/Flightno.model";
 
 @Injectable({
   providedIn: 'root'
@@ -117,11 +118,10 @@ export class HTTPService {
 
     //TODO: change localhost to server
     let url = "http://127.0.0.1:5000/bildl/"
-    return this.http.post<FlightSearch>(url,{
+    return this.http.post<FlightnoModel>(url,{
       "data": base64
     }, {headers: headers})
   }
-
 }
 
 enum options {

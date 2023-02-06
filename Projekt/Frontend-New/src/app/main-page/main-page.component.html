@@ -1,0 +1,116 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="wrapper" id="oneHead">
+  <div class="sectionHead" id="one">
+    <div>
+      <ul id="nav">
+        <li class="li" routerLink="login">Login</li>
+        <li class="li" routerLink="register">Sign-up</li>
+      </ul>
+    </div>
+    <div id="wrapFlex">
+      <h1 id="h1"><span class="span">Check</span> your <br> Emissions with <br><span class="span">Oxytravel</span></h1>
+      <div id="searchFlightBox">
+        <input placeholder="Flugnummer" [(ngModel)]="inputFlight" id="input">
+        <button [disabled]="inputFlight==''" (click)="getFlightWithNumber()" id="button">Search</button>
+        <div class="right">
+          <input id="image" type="file" (change)="onFileChanged($event)" #fileInput/>
+          <!--<canvas id="canvas" #canvas></canvas>-->
+          <h3>{{statusOfImageUpload}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="subSectionHead1">
+    </div>
+    <div class="subSectionHead2">
+      <div class="navigationButtons" id="navigationOne">
+        <span style="font-size: 8rem; color: #fff" class="material-icons"><a id="aTag" href="#two">expand_more</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="two">
+    <div class="subSection1">
+      <!-- <div class="data" [hidden]="hideDetails"> -->
+      <div class="data">
+        <div id="flight">
+          <h1 id="h1Flight">Details for flight: {{lastSearch}}</h1>
+          <p>From {{departureStation}} | {{departureCountry}}</p>
+          <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
+          <p>Dauer des Flugs: {{timeDiffStr}}</p>
+          <p>Distanz: {{distance}} km</p>
+          <p>Emissionen: {{emissions}} tonnen Co2</p>
+          <p>Bäume: {{trees}} Buchen</p>
+        </div>
+      </div>
+    </div>
+    <div class="subSection2">
+      <img class="icon" src="../../assets/plane-2.svg">
+    </div>
+    <!-- <div id="gif">
+      <ng-lottie [options]="flugzeug"></ng-lottie>
+      <ng-lottie [options]="bicycal"></ng-lottie>
+      <ng-lottie [options]="car"></ng-lottie>
+    </div> -->
+
+    <div class="navigationButtons" id="navigationTwo">
+      <span style="font-size: 7vh" class="material-icons"><a href="#oneHead">expand_less</a></span>
+      <span style="font-size: 7vh" class="material-icons"><a href="#three">expand_more</a></span>
+    </div>
+  </div>
+  <div class="section" id="three">
+    <div class="subSection1" id="colorSection1">
+      <img class="icon" src="../../assets/car_1.svg">
+    </div>
+    <div class="subSection2" id="colorSection2">
+      <div id="dataCar">
+        <div id="car">
+          <h1>Auto</h1>
+          <p>Dauer: {{durationCar}}</p>
+          <p>Weg: {{wegAuto}}</p>
+          <p>Sprit: {{fuelUsed}}</p>
+          <p>Emissionen: {{carEmissions}}</p>
+          <p>Bäume: {{carEmissionTrees}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigationButtons" id="navigationThree">
+      <span style="font-size: 7vh" class="material-icons"><a href="#two">expand_less</a></span>
+      <span style="font-size: 7vh" class="material-icons"><a href="#four">expand_more</a></span>
+    </div>
+  </div>
+  <div class="section" id="four">
+    <div class="subSection1">
+      <div id="dataBycicle">
+        <div id="fahrrad">
+          <h1>Fahrrad</h1>
+          <p>Dauer: {{durationBicycle}}</p>
+          <p>Weg: {{wegBicycle}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="subSection2" id="subSection2_1">
+      <img class="icon" src="../../assets/bike.svg">
+    </div>
+
+    <div class="navigationButtons" id="navigationFour">
+      <span style="font-size: 7vh" class="material-icons"><a href="#three">expand_less</a></span>
+      <span style="font-size: 7vh" class="material-icons"><a href="#five">expand_more</a></span>
+    </div>
+  </div>
+  <div class="section" id="five">
+    <div class="subSection1"><div class="left"></div>
+      <div class="right">
+        <input id="file" type="file" (change)="onFileChanged($event)" #fileInput/>
+        <!--<canvas id="canvas" #canvas></canvas>-->
+        <h3>{{statusOfImageUpload}}</h3>
+      </div>
+    </div>
+    <div class="subSection2"></div>
+
+    <div class="navigationButtons" id="navigationFive">
+      <span style="font-size: 7vh" class="material-icons"><a href="#four">expand_less</a></span>
+      <span style="font-size: 7vh; color: grey"  class="material-icons">expand_more</span>
+    </div>
+  </div>
+</div>
