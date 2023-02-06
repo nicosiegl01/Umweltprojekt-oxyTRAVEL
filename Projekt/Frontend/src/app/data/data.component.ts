@@ -369,7 +369,7 @@ export class DataComponent implements OnInit {
     let str = temp[1]
     //TODO: send to python-script
     this.http.sendBase64GetFlightnumber(str).subscribe(temp => {
-      console.log(temp)
+      alert(temp)
     });
 
   }

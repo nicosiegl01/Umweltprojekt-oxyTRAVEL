@@ -108,8 +108,10 @@ export class HTTPService {
 
   sendBase64GetFlightnumber(base64:string){
     //TODO: change localhost to server
-    let url = "http://127.0.0.1:5000/hello/"+base64
-    return this.http.get<FlightSearch[]>(url)
+    let url = "http://127.0.0.1:5000/bildl/"
+    return this.http.post<number>(url,{
+      "data": base64
+    })
   }
 
 }
