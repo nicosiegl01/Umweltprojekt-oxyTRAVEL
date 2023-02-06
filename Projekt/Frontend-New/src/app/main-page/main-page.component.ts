@@ -11,7 +11,7 @@ import {Tree} from "../interfaces/Tree.model";
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-
+  flightFromImage:string = ""
   title = 'neuesFrontendOxyTravel';
 
   // flugzeug: AnimationOptions = {
@@ -386,7 +386,7 @@ export class MainPageComponent implements OnInit {
     //TODO: send to python-script
     console.log(str)
     this.http.sendBase64GetFlightnumber(str).subscribe(temp => {
-      console.log(temp)
+      this.inputFlight = temp.flugnr
     });
 
   }
