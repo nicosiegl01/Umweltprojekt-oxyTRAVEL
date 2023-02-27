@@ -17,6 +17,12 @@
           <input id="image" type="file" (change)="onFileChanged($event)" #fileInput/>
           <!--<canvas id="canvas" #canvas></canvas>-->
           <h3>{{statusOfImageUpload}}</h3>
+          <div class="inputSearch">
+            <label>Start</label>
+            <input>
+            <label>Ende</label>
+            <input>
+          </div>
         </div>
       </div>
     <div class="subSectionHead1">
@@ -25,6 +31,7 @@
       <div class="navigationButtons" id="navigationOne">
         <span style="font-size: 8rem; color: #fff" class="material-icons"><a id="aTag" href="#two">expand_more</a></span>
       </div>
+
     </div>
   </div>
 
@@ -40,9 +47,13 @@
           <p>Distanz: {{distance}} km</p>
           <p>Emissionen: {{emissions}} tonnen Co2</p>
           <p>Bäume: {{trees}} Buchen</p>
+
+
         </div>
       </div>
     </div>
+
+
     <div class="subSection2">
       <img class="icon" src="../../assets/plane-2.svg">
     </div>

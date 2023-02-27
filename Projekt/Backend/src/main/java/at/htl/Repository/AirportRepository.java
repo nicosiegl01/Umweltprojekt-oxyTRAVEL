@@ -34,5 +34,22 @@ public class AirportRepository implements PanacheRepository<Airport> {
         }
     }
 
-    
+    public Airport findAirportByCityName(String cityName){
+        String pattern = "%"+cityName+"%";
+        String sql = "SELECT a FROM Airport a WHERE a.name LIKE :cityName";
+        TypedQuery q = em.createQuery(sql, Airport.class);
+        q.setParameter("cityName", pattern);
+        try{
+            return (Airport) q.getResultList().get(0);
+        }catch (Exception e){
+            System.out.print("Error: " + e.getMessage() + "");
+            return null;
+        }
+    }
+
+    public List<Airport> getAllAirports(){
+        String sql = "SELECT distinct a FROM Airport a";
+        TypedQuery q = em.createQuery(sql, Airport.class);
+        return q.getResultList();
+    }
 }

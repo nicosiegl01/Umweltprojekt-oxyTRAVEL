@@ -53,4 +53,18 @@ public class AirportRessource {
         return this.airportRepository.getAirports(airport1,airport2);
     }
 
+    @GET
+    @Path("/findAirportsByCity/{city}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Airport findAirportsByCity(@PathParam("city") String city){
+        return this.airportRepository.findAirportByCityName(city);
+    }
+
+    @GET
+    @Path("/allAirports")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Airport> findAllAirports(){
+        return this.airportRepository.getAllAirports();
+    }
+
 }

@@ -67,3 +67,9 @@ GET http://localhost:8081/api/search/findByUser/test@mail.at
 
 <> 2023-01-16T132909.200.json
 <> 2023-01-16T132551.500.json
+
+###
+GET http://localhost:8081/api/airport/findAirportsByCity/Wien
+
+###
+GET http://localhost:8081/api/airport/allAirports
