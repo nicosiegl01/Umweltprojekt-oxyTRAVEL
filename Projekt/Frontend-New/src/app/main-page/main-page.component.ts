@@ -69,8 +69,13 @@ export class MainPageComponent implements OnInit {
   type:string = ""
   statusOfImageUpload: string = "NotUploaded"
 
+  fromLocation: string = ""
+  toLocation: string = ""
+
+
   @ViewChild('canvas')
   canvas!: ElementRef;
+
 
 
   constructor(private http: HTTPService) {
@@ -261,6 +266,7 @@ export class MainPageComponent implements OnInit {
       this.trees = Number(this.emissions * 1000) / Number(this.tree.consumption);
       this.carEmissions = this.fuelUsed * this.carEmissionPerLiter
       this.carEmissionTrees = this.carEmissions / Number(this.tree.consumption);
+      console.log(this.carEmissions)
       console.log(this.carEmissionTrees);
       console.log(this.trees);
       this.chart = new Chart("MyChart", {
@@ -392,6 +398,28 @@ export class MainPageComponent implements OnInit {
   }
 
 
+  searchByLocations() {
+    console.log(this.fromLocation)
+    console.log(this.toLocation)
+
+    this.http.getCarRoute(this.fromLocation, this.toLocation, options.shortest).subscribe(temp2 => {
+      this.durationCar = temp2.route.formattedTime
+      this.wegAuto = temp2.route.distance * 1.609344;
+      //7.7 Liter pro 100 Kilometer
+      this.fuelUsed = this.wegAuto * 0.07;
+
+      this.getTree();
+
+      console.log(this.wegAuto)
+    })
+
+    this.http.getBicycleRoute(this.fromLocation, this.toLocation).subscribe(temp3 => {
+      this.wegBicycle = temp3.route.distance * 1.609344
+      this.durationBicycle = temp3.route.formattedTime
+
+      console.log(this.wegBicycle)
+    })
+  }
 }
 
 enum options {

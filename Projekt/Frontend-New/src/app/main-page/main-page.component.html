@@ -19,9 +19,10 @@
           <h3>{{statusOfImageUpload}}</h3>
           <div class="inputSearch">
             <label>Start</label>
-            <input>
+            <input [(ngModel)]="fromLocation">
             <label>Ende</label>
-            <input>
+            <input [(ngModel)]="toLocation">
+            <button  (click)="searchByLocations()">Search</button>
           </div>
         </div>
       </div>
