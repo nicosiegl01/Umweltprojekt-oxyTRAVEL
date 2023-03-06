@@ -3,21 +3,22 @@
   margin: 0;
 }
 
-#h1{
-  font-size: 5rem;
+#h1 {
+  font-size: 6rem;
   font-family: "Poppins";
   -webkit-text-stroke-width: 2px;
   color: rgba(255, 255, 255, 1);
   text-align: center;
   font-weight: bold;
+  margin-top: -20vh;
 }
 
-#h1Flight{
+#h1Flight {
   font-family: "Poppins";
 }
 
-.span{
-  font-size: 5rem;
+.span {
+  font-size: 6rem;
   font-family: "Poppins";
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #fff;
@@ -26,49 +27,47 @@
   font-weight: bold;
 }
 
-#wrapFlex{
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+#wrapFlex {
+
 }
 
-#input{
+#input {
   margin-left: auto;
-  margin-top: 1%;
-  width: 10%;
-  padding: 1%;
+  margin-top: 4vh;
+  width: 7vw;
   border: none;
+  text-align: center;
+  border-radius: 7px;
 }
 
-#button{
+.button {
   width: 10%;
   background-color: #fff;
   border: none;
   color: #000;
   margin-left: 1%;
   margin-right: auto;
-  margin-top: 1%;
-  height: 7vh;
+  margin-top: 4vh;
+  height: 4vh;
+  width: 7vw;
   font-family: "Poppins";
   font-weight: bold;
+  border-radius: 7px;
 }
 
-#searchFlightBox{
+#searchFlightBox {
   width: 80%;
   height: 8vh;
   display: flex;
   flex-direction: row;
 }
 
-#car{
+#car {
   padding: 1%;
   border-bottom: #FFB703 solid 10px;
 }
 
-#dataCar{
+#dataCar {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -77,20 +76,20 @@
   font-family: "Poppins";
 }
 
-#colorSection1{
+#colorSection1 {
   background-color: #023047;
 }
 
-#colorSection2{
+#colorSection2 {
   background-color: #fff;
 }
 
-#flight{
+#flight {
   padding: 1%;
   border-bottom: #023047 solid 10px;
 }
 
-.icon{
+.icon {
   width: 40%;
   margin-left: 30%;
   margin-top: 30%;
@@ -113,20 +112,17 @@
 
 .sectionHead {
   width: 100vw;
+  display: flex;
   height: 100vh;
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1.3fr 0.7fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "."
-    "."; */
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #one {
-  background-image:
-    linear-gradient(hsla(215,30%,70%,0.9) 0%, #219EBC 80%, hsla(215,30%,70%,0.9) 100%),
-    linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
+  background-image: linear-gradient(hsla(215, 30%, 70%, 0.9) 0%, #219EBC 80%, hsla(215, 30%, 70%, 0.9) 100%),
+  linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
 }
 
 #two {
@@ -154,11 +150,11 @@
   background-color: #8ECAE6;
 }
 
-#subSection2_1{
+#subSection2_1 {
   background-color: #219EBC;
 }
 
-#dataBycicle{
+#dataBycicle {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -167,7 +163,7 @@
   font-family: "Poppins";
 }
 
-#fahrrad{
+#fahrrad {
   padding: 1%;
   border-bottom: #FB8500 solid 10px;
 }
@@ -176,7 +172,7 @@
   background-color: aquamarine;
 }
 
-.data{
+.data {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -193,22 +189,30 @@
   margin-right: auto;
 }
 
-#nav{
+#nav {
   display: flex;
-  flex-direction: row;
   font-family: "Poppins";
   position: absolute;
-  right: 3vw;
-  font-size: 1rem;
-  width: 10%;
+  right: 0vw;
+  font-size: 1.5rem;
+  width: 14%;
   top: 3vh;
   text-decoration: none;
   list-style: none;
+  cursor: pointer;
 }
 
-.li{
+.li {
   margin-left: 10%;
   text-decoration: none;
+  border-bottom-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  transition: border-bottom-color 0.3s ease-in;
+}
+
+.li:hover {
+  border-bottom-color: black;
 }
 
 .navigationButtons {
@@ -219,10 +223,6 @@
   position: absolute;
   bottom: 15vh;
   right: 47%;
-}
-
-#aTag{
-  color: #fff;
 }
 
 #navigationTwo {
@@ -249,9 +249,31 @@
   right: 2vw;
 }
 
-#five{
-  background-image:
-    linear-gradient(hsla(215,30%,70%,0.9) 0%, #219EBC 80%, hsla(215,30%,70%,0.9) 100%),
-    linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
+#five {
+  background-image: linear-gradient(hsla(215, 30%, 70%, 0.9) 0%, #219EBC 80%, hsla(215, 30%, 70%, 0.9) 100%),
+  linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
+}
+
+.right {
+  margin-top: 5vh;
+}
+
+.fileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 8vw;
+  padding: 1%;
+}
+
+.custom-file-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  cursor: pointer;
 }
 

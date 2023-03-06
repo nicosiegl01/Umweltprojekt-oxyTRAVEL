@@ -7,33 +7,35 @@
         <li class="li" routerLink="register">Sign-up</li>
       </ul>
     </div>
-    <div id="wrapFlex">
-      <h1 id="h1"><span class="span">Check</span> your <br> Emissions with <br><span class="span">Oxytravel</span></h1>
-      <div id="searchFlightBox">
-        <input placeholder="Flugnummer" [(ngModel)]="inputFlight" id="input">
-        <button [disabled]="inputFlight==''" (click)="getFlightWithNumber()" id="button">Search</button>
-      </div>
-        <div class="right">
-          <input id="image" type="file" (change)="onFileChanged($event)" #fileInput/>
-          <!--<canvas id="canvas" #canvas></canvas>-->
-          <h3>{{statusOfImageUpload}}</h3>
-          <div class="inputSearch">
-            <label>Start</label>
-            <input [(ngModel)]="fromLocation">
-            <label>Ende</label>
-            <input [(ngModel)]="toLocation">
-            <button  (click)="searchByLocations()">Search</button>
-          </div>
-        </div>
-      </div>
-    <div class="subSectionHead1">
-    </div>
-    <div class="subSectionHead2">
-      <div class="navigationButtons" id="navigationOne">
-        <span style="font-size: 8rem; color: #fff" class="material-icons"><a id="aTag" href="#two">expand_more</a></span>
-      </div>
 
+    <h1 id="h1"><span class="span">Check your <br> </span>Emissions <span class="span"> with <br></span>Oxytravel</h1>
+    <div id="searchFlightBox">
+      <input placeholder="Flugnummer" [(ngModel)]="inputFlight" id="input">
+      <button [disabled]="inputFlight==''" (click)="getFlightWithNumber()" class="button">Search</button>
     </div>
+    <div class="right">
+
+
+        <label for="image" class="custom-file-upload">
+          <i class="material-icons" style="font-size: 4vh; height: 4vh; width: 4vh;">cloud_upload</i> <p style="text-align: center">Upload Image</p>
+        </label>
+        <input id="image" style="display: none" type="file" (change)="onFileChanged($event)" #fileInput/>
+
+      <!--<canvas id="canvas" #canvas></canvas>-->
+      <h3>{{statusOfImageUpload}}</h3>
+      <div class="inputSearch">
+        <label>Start</label>
+        <input [(ngModel)]="fromLocation">
+        <label>Ende</label>
+        <input [(ngModel)]="toLocation">
+        <button (click)="searchByLocations()">Search</button>
+      </div>
+    </div>
+
+    <div class="navigationButtons" id="navigationOne">
+      <a href="#two"><span style="font-size: 8rem; color: #fff; margin-top: -1vh; z-index: 10" class="material-icons">expand_more</span></a>
+    </div>
+
   </div>
 
   <div class="section" id="two">
@@ -65,8 +67,8 @@
     </div> -->
 
     <div class="navigationButtons" id="navigationTwo">
-      <span style="font-size: 7vh" class="material-icons"><a href="#oneHead">expand_less</a></span>
-      <span style="font-size: 7vh" class="material-icons"><a href="#three">expand_more</a></span>
+      <a href="#oneHead"><span style="font-size: 7vh" class="material-icons">expand_less</span></a>
+      <a href="#three"><span style="font-size: 7vh" class="material-icons">expand_more</span></a>
     </div>
   </div>
   <div class="section" id="three">
@@ -87,8 +89,8 @@
     </div>
 
     <div class="navigationButtons" id="navigationThree">
-      <span style="font-size: 7vh" class="material-icons"><a href="#two">expand_less</a></span>
-      <span style="font-size: 7vh" class="material-icons"><a href="#four">expand_more</a></span>
+      <a href="#two"><span style="font-size: 7vh" class="material-icons">expand_less</span></a>
+      <a href="#four"><span style="font-size: 7vh" class="material-icons">expand_more</span></a>
     </div>
   </div>
   <div class="section" id="four">
@@ -106,19 +108,18 @@
     </div>
 
     <div class="navigationButtons" id="navigationFour">
-      <span style="font-size: 7vh" class="material-icons"><a href="#three">expand_less</a></span>
-      <span style="font-size: 7vh" class="material-icons"><a href="#five">expand_more</a></span>
+      <a href="#three"><span style="font-size: 7vh" class="material-icons">expand_less</span></a>
+      <a href="#five"><span style="font-size: 7vh" class="material-icons">expand_more</span></a>
     </div>
   </div>
   <div class="section" id="five">
 
-    <canvas id="MyChart" >{{ chart }}</canvas>
-
+    <canvas id="MyChart">{{ chart }}</canvas>
 
 
     <div class="navigationButtons" id="navigationFive">
-      <span style="font-size: 7vh" class="material-icons"><a href="#four">expand_less</a></span>
-      <span style="font-size: 7vh; color: grey"  class="material-icons">expand_more</span>
+      <a href="#four"><span style="font-size: 7vh" class="material-icons">expand_less</span></a>
+      <span style="font-size: 7vh; color: grey" class="material-icons">expand_more</span>
     </div>
   </div>
 </div>
