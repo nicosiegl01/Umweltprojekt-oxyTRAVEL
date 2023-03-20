@@ -4,13 +4,18 @@
 }
 
 #h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   font-family: "Poppins";
   -webkit-text-stroke-width: 2px;
   color: rgba(255, 255, 255, 1);
   text-align: center;
   font-weight: bold;
-  margin-top: -20vh;
+  margin-top: -10vh;
+}
+
+#Logo{
+  width: 30%;
+  margin-left: 6%;
 }
 
 #h1Flight {
@@ -18,7 +23,7 @@
 }
 
 .span {
-  font-size: 6rem;
+  font-size: 5rem;
   font-family: "Poppins";
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #fff;
@@ -34,7 +39,7 @@
 #input {
   margin-left: auto;
   margin-top: 4vh;
-  width: 7vw;
+  width: 8vw;
   border: none;
   text-align: center;
   border-radius: 7px;
@@ -120,10 +125,6 @@
   flex-direction: column;
 }
 
-#one {
-  background-image: linear-gradient(hsla(215, 30%, 70%, 0.9) 0%, #219EBC 80%, hsla(215, 30%, 70%, 0.9) 100%),
-  linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
-}
 
 #two {
   background-color: green;
