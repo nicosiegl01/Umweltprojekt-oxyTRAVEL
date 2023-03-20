@@ -18,6 +18,14 @@
   margin-left: 6%;
 }
 
+#file-status{
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+#button2{
+}
+
 #h1Flight {
   font-family: "Poppins";
 }

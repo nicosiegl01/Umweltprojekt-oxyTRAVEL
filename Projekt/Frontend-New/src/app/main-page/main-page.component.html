@@ -17,25 +17,32 @@
 
 
         <label for="image" class="custom-file-upload">
-          <i class="material-icons" style="font-size: 4vh; height: 4vh; width: 4vh;">cloud_upload</i> <p style="text-align: center">Upload Image</p>
+          <i class="material-icons" style="font-size: 4vh; height: 4vh; width: 4vh;">cloud_upload</i> <p >Upload Image</p>
         </label>
         <input id="image" style="display: none" type="file" (change)="onFileChanged($event)" #fileInput/>
 
       <!--<canvas id="canvas" #canvas></canvas>-->
-      <h3>{{statusOfImageUpload}}</h3>
+      <h3 id="file-status">{{statusOfImageUpload}}</h3>
       <div class="inputSearch">
         <label>Start</label>
+        <br>
         <input [(ngModel)]="fromLocation">
+        <br>
         <label>End</label>
+        <br>
         <input [(ngModel)]="toLocation">
-        <button (click)="searchByLocations()">Search</button>
+        <button id="button2" (click)="searchByLocations()">Search</button>
       </div>
     </div>
-
-    <div class="navigationButtons" id="navigationOne">
-      <a href="#two"><span style="font-size: 8rem; color: #fff; margin-top: -1vh; z-index: 10" class="material-icons">expand_more</span></a>
+<p style="color:rgba(0,0,0,0)">f</p>
+    <div  class="navigationButtons" id="navigationOne"><!--[hidden]="hideButtons"-->
+      <a href="#two"><span style="font-size: 8rem; color: #fff; margin-top: 1vh; z-index: 100" id="arrow-down" class="material-icons">expand_more</span></a>
     </div>
-
+    <p style="color:rgba(0,0,0,0)">f</p>
+    <p style="color:rgba(0,0,0,0)">f</p>
+    <p style="color:rgba(0,0,0,0)">f</p>
+    <p style="color:rgba(0,0,0,0)">f</p>
+    <p style="color:rgba(0,0,0,0)">f</p>
   </div>
 
   <div class="section" id="two">
@@ -43,7 +50,7 @@
       <!-- <div class="data" [hidden]="hideDetails"> -->
       <div class="data">
         <div id="flight">
-          <h1 id="h1Flight">Details for the flight: {{lastSearch}}</h1>
+          <h1 id="h1Flight">Details for the flight: <br>{{lastSearch}}</h1>
           <p>From {{departureStation}} | {{departureCountry}}</p>
           <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
           <p>Duration of the flight: {{timeDiffStr}}</p>
@@ -100,6 +107,7 @@
           <h1>Bicycle</h1>
           <p>Duration: {{durationBicycle.split(":")[0]}} Hours, {{durationBicycle.split(":")[1]}} Minutes</p>
           <p>Path: {{wegBicycle}}km</p>
+          <p>🍕You could eat <b>{{pizzen}}</b> salami pizzas by choosing the bicycle🍕</p>
         </div>
       </div>
     </div>

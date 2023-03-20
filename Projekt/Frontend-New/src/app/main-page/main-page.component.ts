@@ -25,6 +25,7 @@ export class MainPageComponent implements OnInit {
   // car: AnimationOptions = {
   //   path: '/assets/car.json',
   // };
+  user!:Customer
   departureStation: string = ""
   departureCountry: string = ""
   arrivalStation: string = ""
@@ -75,6 +76,9 @@ export class MainPageComponent implements OnInit {
 
   @ViewChild('canvas')
   canvas!: ElementRef;
+  caloriensMen: number = 0
+  pizzen:number=0
+  hideButtons:boolean = true;
 
 
 
@@ -83,7 +87,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.user = JSON.parse(localStorage.getItem("my_user")!)
   }
 
   getFlightWithNumber() {
@@ -267,16 +271,20 @@ export class MainPageComponent implements OnInit {
 
   getTree(){
     console.log('getTree')
+
+
     this.http.getTree().subscribe(temp => {
       this.tree = temp;
       console.log(this.tree);
       console.log(this.emissions);
       this.trees = Number(this.emissions * 1000) / Number(this.tree.consumption);
       this.trees = parseFloat(this.trees.toFixed(2));
+      this.http.addFlightNumberToAccount(this.user,this.inputFlight,this.trees, this.emissions);
       this.carEmissions = this.fuelUsed * this.carEmissionPerLiter
       this.carEmissions = parseFloat(this.carEmissions.toFixed(2));
       this.carEmissionTrees = this.carEmissions / Number(this.tree.consumption);
       this.carEmissionTrees = parseFloat(this.carEmissionTrees.toFixed(2));
+
 
       this.chart = new Chart("MyChart", {
         type: "line", //this denotes tha type of chart
@@ -319,7 +327,7 @@ export class MainPageComponent implements OnInit {
   }
 
   onFileChanged(event: any): void {
-    this.statusOfImageUpload = "uploading...";
+    this.statusOfImageUpload = "uploaded";
     this.imageUpload(event)
     if (event == null || event.target == null)
       return;
@@ -418,7 +426,8 @@ export class MainPageComponent implements OnInit {
       //7.7 Liter pro 100 Kilometer
       this.fuelUsed = this.wegAuto * 0.07;
       this.fuelUsed = parseFloat(this.fuelUsed.toFixed(2));
-
+      this.hideButtons = false
+      console.log(this.hideButtons)
       this.getTree();
 
       console.log(this.wegAuto)
@@ -430,7 +439,15 @@ export class MainPageComponent implements OnInit {
       this.durationBicycle = temp3.route.formattedTime
 
       console.log(this.wegBicycle)
+      this.caloriens()
     })
+  }
+
+  private caloriens() {
+    let caloriens = 0;
+    caloriens = (this.wegBicycle / 30)*690
+    this.caloriensMen = caloriens
+    this.pizzen = Math.floor(this.caloriensMen/1320)
   }
 }
 
