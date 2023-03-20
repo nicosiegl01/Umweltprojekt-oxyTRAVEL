@@ -58,7 +58,7 @@ export class MainPageComponent implements OnInit {
   tree!: Tree
   trees: number = 0;
   //in Kilogramm
-  carEmissionPerLiter: number = 2.37;
+  carEmissionPerLiter: number =  2.37;
   carEmissionTrees!: number;
   carEmissions!: number;
 
@@ -175,8 +175,11 @@ export class MainPageComponent implements OnInit {
       this.http.getCarRoute(this.dep_city, this.arr_city, options.shortest).subscribe(temp2 => {
         this.durationCar = temp2.route.formattedTime
         this.wegAuto = temp2.route.distance * 1.609344;
+        this.wegAuto = parseFloat(this.wegAuto.toFixed(2));
+
         //7.7 Liter pro 100 Kilometer
         this.fuelUsed = this.wegAuto * 0.07;
+        this.fuelUsed = parseFloat(this.fuelUsed.toFixed(2));
         console.log(this.durationCar)
         console.log(this.fuelUsed)
         console.log(this.wegAuto)
@@ -192,6 +195,7 @@ export class MainPageComponent implements OnInit {
 
       this.http.getBicycleRoute(this.dep_city, this.arr_city).subscribe(temp3 => {
         this.wegBicycle = temp3.route.distance * 1.609344
+        this.wegBicycle = parseFloat(this.wegBicycle.toFixed(2));
         this.durationBicycle = temp3.route.formattedTime
       })
 
@@ -231,6 +235,7 @@ export class MainPageComponent implements OnInit {
     // -33.94 = Breitengrad Sydney / -46
     // 151.175 = Längengrad Sydney /168
     this.distance = 6371 * Math.acos(Math.sin(this.toDegree(xBreitengrad)) * Math.sin(this.toDegree(yBreitengrad)) + Math.cos(this.toDegree(xBreitengrad)) * Math.cos(this.toDegree(yBreitengrad)) * Math.cos(this.toDegree(yLaengengrad) - this.toDegree(xLaengengrad))) * Math.PI / this.toDegree(180);
+    this.distance = parseFloat(this.distance.toFixed(2));
     console.log(this.distance);
     this.distance = Number(this.distance.toFixed(2));
   }
@@ -249,8 +254,11 @@ export class MainPageComponent implements OnInit {
       //this.emissions = (flightdistance / 0.53996) * 6.27 * 3.15 / 144;
     }else if(this.distance > 1852){
       let flightdistance = this.distance * 1.09;
+      flightdistance = parseFloat(flightdistance.toFixed(2));
       let emmissionLongDistance = (flightdistance * 0.041 * 0.8 * 3.15) / 297;
+      emmissionLongDistance = parseFloat(emmissionLongDistance.toFixed(2));
       this.emissions = emmissionLongDistance;
+      this.emissions = parseFloat(this.emissions.toFixed(2));
     }
     //this.emissions = (0.04 * 3.15 * this.distance)/144;
     console.log(this.emissions.toFixed(2) + "kg Co2");
@@ -264,11 +272,12 @@ export class MainPageComponent implements OnInit {
       console.log(this.tree);
       console.log(this.emissions);
       this.trees = Number(this.emissions * 1000) / Number(this.tree.consumption);
+      this.trees = parseFloat(this.trees.toFixed(2));
       this.carEmissions = this.fuelUsed * this.carEmissionPerLiter
+      this.carEmissions = parseFloat(this.carEmissions.toFixed(2));
       this.carEmissionTrees = this.carEmissions / Number(this.tree.consumption);
-      console.log(this.carEmissions)
-      console.log(this.carEmissionTrees);
-      console.log(this.trees);
+      this.carEmissionTrees = parseFloat(this.carEmissionTrees.toFixed(2));
+
       this.chart = new Chart("MyChart", {
         type: "line", //this denotes tha type of chart
 
@@ -405,8 +414,10 @@ export class MainPageComponent implements OnInit {
     this.http.getCarRoute(this.fromLocation, this.toLocation, options.shortest).subscribe(temp2 => {
       this.durationCar = temp2.route.formattedTime
       this.wegAuto = temp2.route.distance * 1.609344;
+      this.wegAuto = parseFloat(this.wegAuto.toFixed(2));
       //7.7 Liter pro 100 Kilometer
       this.fuelUsed = this.wegAuto * 0.07;
+      this.fuelUsed = parseFloat(this.fuelUsed.toFixed(2));
 
       this.getTree();
 
@@ -415,6 +426,7 @@ export class MainPageComponent implements OnInit {
 
     this.http.getBicycleRoute(this.fromLocation, this.toLocation).subscribe(temp3 => {
       this.wegBicycle = temp3.route.distance * 1.609344
+      this.wegBicycle = parseFloat(this.wegBicycle.toFixed(2));
       this.durationBicycle = temp3.route.formattedTime
 
       console.log(this.wegBicycle)

@@ -46,7 +46,7 @@
           <h1 id="h1Flight">Details for the flight: {{lastSearch}}</h1>
           <p>From {{departureStation}} | {{departureCountry}}</p>
           <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
-          <p>Duration of the flight: {{timeDiffStr}}h</p>
+          <p>Duration of the flight: {{timeDiffStr}}</p>
           <p>Distance: {{distance}} km</p>
           <p>Emissions: {{emissions}} tons Co2</p>
           <p>Trees: {{trees}} beech</p>
@@ -79,11 +79,11 @@
       <div id="dataCar">
         <div id="car">
           <h1>Car</h1>
-          <p>Duration: {{durationCar}}h</p>
+          <p>Duration: {{durationCar.split(":")[0]}} Hours, {{durationCar.split(":")[1]}} Minutes</p>
           <p>Path: {{wegAuto}}km</p>
-          <p>Fuel: {{fuelUsed}}l</p>
-          <p>Emissions: {{carEmissions}}tons Co2</p>
-          <p>Trees: {{carEmissionTrees}}beech</p>
+          <p>Fuel: {{fuelUsed}} Liter</p>
+          <p>Emissions: {{carEmissions}} tons Co2</p>
+          <p>Trees: {{carEmissionTrees}} beech</p>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
       <div id="dataBycicle">
         <div id="fahrrad">
           <h1>Bicycle</h1>
-          <p>Duration: {{durationBicycle}}h</p>
+          <p>Duration: {{durationBicycle.split(":")[0]}} Hours, {{durationBicycle.split(":")[1]}} Minutes</p>
           <p>Path: {{wegBicycle}}km</p>
         </div>
       </div>
