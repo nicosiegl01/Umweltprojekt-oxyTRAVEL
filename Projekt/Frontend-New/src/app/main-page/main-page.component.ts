@@ -72,6 +72,7 @@ export class MainPageComponent implements OnInit {
 
   fromLocation: string = ""
   toLocation: string = ""
+  treeVis:string[] = []
 
 
   @ViewChild('canvas')
@@ -284,6 +285,12 @@ export class MainPageComponent implements OnInit {
       this.carEmissions = parseFloat(this.carEmissions.toFixed(2));
       this.carEmissionTrees = this.carEmissions / Number(this.tree.consumption);
       this.carEmissionTrees = parseFloat(this.carEmissionTrees.toFixed(2));
+
+      this.trees = Math.ceil(this.trees)
+
+      for (let i = 0; i < this.trees; i++) {
+        this.treeVis.push("🌳")
+      }
 
 
       this.chart = new Chart("MyChart", {
