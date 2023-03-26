@@ -80,6 +80,13 @@
   border-bottom: #FFB703 solid 10px;
 }
 
+#treeBox{
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  height: fit-content;
+}
+
 #dataCar {
   height: 100vh;
   display: flex;
@@ -127,12 +134,11 @@
   width: 100vw;
   display: flex;
   height: 100vh;
-  width: 100%;
+  width: 100%;  
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
 
 #two {
   background-color: green;
@@ -259,8 +265,7 @@
 }
 
 #five {
-  background-image: linear-gradient(hsla(215, 30%, 70%, 0.9) 0%, #219EBC 80%, hsla(215, 30%, 70%, 0.9) 100%),
-  linear-gradient(to right, #8ECAE6 30%, #8ECAE6 50%, #8ECAE6 70%);
+  background-color: #85aecc;
 }
 
 .right {

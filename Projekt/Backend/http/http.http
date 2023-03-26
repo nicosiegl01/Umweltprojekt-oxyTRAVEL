@@ -48,7 +48,7 @@ Content-Type: application/json
   "mail": "test@mail.com",
   "password": "test"
 }
-
+d db
 
 ###
 GET http://localhost:8081/api/findByMail/test@mail.com

@@ -9,11 +9,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { DiagramComponent } from './diagram/diagram.component';
 
 const appRoutes: Routes = [
   { path: "", component: MainPageComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: SignUpComponent },
+  { path: "account", component: DiagramComponent}
 ];
 
 
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     MainPageComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    DiagramComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { Chart, registerables } from 'chart.js';
 import { HTTPService } from '../http/http.service';
 import {Airport} from "../interfaces/Airport";
 import {Customer} from "../interfaces/Customer.modle";
+import { FlightSearch } from '../interfaces/FlightSearch.model';
+import { FlightSearchDTO } from '../interfaces/FlightSearchDTO.model';
 import {Tree} from "../interfaces/Tree.model";
 
 @Component({
@@ -80,6 +82,9 @@ export class MainPageComponent implements OnInit {
   caloriensMen: number = 0
   pizzen:number=0
   hideButtons:boolean = true;
+  countdown: number = 0; // Startwert des Countdowns
+  intervalId: any; // ID des Intervalls für den Countdown
+  flightSearch: FlightSearch[] = [];
 
 
 
@@ -89,11 +94,50 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("my_user")!)
+    console.log(this.user.mail);
+    // this.http.getFlightSearchData(this.user.mail).subscribe(data => {
+    //   this.flightSearch = data; 
+    
+    //   let co2: any[] = [];
+    //   let trees: any[] = [];
+    //   let labels: any[] = [];
+    
+    //   this.flightSearch.forEach((flight, index) => {
+    //     co2.push(flight.co2);
+    //     trees.push(flight.trees);
+    //     console.log(co2);
+    //     console.log(trees);
+    //     labels.push(`Flug ${index + 1}`);
+    //   });
+    
+    //   this.chart = new Chart("MyChart", {
+    //     type: "line",
+    //     data: {
+    //       labels: labels,
+    //       datasets: [
+    //         {
+    //           label: "Co2",
+    //           data: co2,
+    //           backgroundColor: 'rgb(255, 99, 132)',
+    //         },
+    //         {
+    //           label: "Bäume",
+    //           data: trees,
+    //           backgroundColor: 'rgb(54, 162, 235)',
+    //         }
+    //       ]
+    //     },
+    //     options: {
+    //       aspectRatio: 2.5,
+    //     }
+    //   });
+    // });
   }
 
   getFlightWithNumber() {
     console.log(this.inputFlight);
     this.getFlight(this.inputFlight);
+    this.updateChart();
   }
 
   /*getFlight(flightnumber: any) {
@@ -181,7 +225,6 @@ export class MainPageComponent implements OnInit {
         this.durationCar = temp2.route.formattedTime
         this.wegAuto = temp2.route.distance * 1.609344;
         this.wegAuto = parseFloat(this.wegAuto.toFixed(2));
-
         //7.7 Liter pro 100 Kilometer
         this.fuelUsed = this.wegAuto * 0.07;
         this.fuelUsed = parseFloat(this.fuelUsed.toFixed(2));
@@ -192,9 +235,9 @@ export class MainPageComponent implements OnInit {
         if(this.wegAuto != null){
           let user: Customer = JSON.parse(localStorage.getItem("my_user")!)
           console.log(user)
-          if(user!=null){
-            this.http.addFlightNumberToAccount(user, this.inputFlight,this.emissions,this.trees).subscribe()
-          }
+          // if(user!=null){
+          //   this.http.addFlightNumberToAccount(user, this.inputFlight,this.emissions,this.trees).subscribe()
+          // }
         }
       })
 
@@ -202,6 +245,7 @@ export class MainPageComponent implements OnInit {
         this.wegBicycle = temp3.route.distance * 1.609344
         this.wegBicycle = parseFloat(this.wegBicycle.toFixed(2));
         this.durationBicycle = temp3.route.formattedTime
+        this.caloriens();
       })
 
       this.http.getAirportByName(this.dep_iaco, this.arr_iaco).subscribe(airport1 => {
@@ -269,10 +313,24 @@ export class MainPageComponent implements OnInit {
     console.log(this.emissions.toFixed(2) + "kg Co2");
   }
 
+  startCountdown(): void {
+    setTimeout(() => {
+      this.intervalId = setInterval(() => {
+        if (this.countdown < this.treeVis.length) {
+            this.countdown++;
+        } else {
+          this.stopCountdown();
+        }
+      }, 1000); 
+    }, 1000)// Intervallzeit in Millisekunden
+  }
+
+  stopCountdown(): void {
+    clearInterval(this.intervalId);
+  }
 
   getTree(){
     console.log('getTree')
-
 
     this.http.getTree().subscribe(temp => {
       this.tree = temp;
@@ -280,8 +338,9 @@ export class MainPageComponent implements OnInit {
       console.log(this.emissions);
       this.trees = Number(this.emissions * 1000) / Number(this.tree.consumption);
       this.trees = parseFloat(this.trees.toFixed(2));
-      this.http.addFlightNumberToAccount(this.user,this.inputFlight,this.trees, this.emissions);
-      this.carEmissions = this.fuelUsed * this.carEmissionPerLiter
+      this.http.addFlightNumberToAccount(this.user,this.inputFlight, this.emissions, this.trees).subscribe();
+      console.log("hallo" + this.trees);
+      this.carEmissions = this.fuelUsed * this.carEmissionPerLiter * 2;
       this.carEmissions = parseFloat(this.carEmissions.toFixed(2));
       this.carEmissionTrees = this.carEmissions / Number(this.tree.consumption);
       this.carEmissionTrees = parseFloat(this.carEmissionTrees.toFixed(2));
@@ -289,40 +348,109 @@ export class MainPageComponent implements OnInit {
       this.trees = Math.ceil(this.trees)
 
       for (let i = 0; i < this.trees; i++) {
-        this.treeVis.push("🌳")
+        this.treeVis.push("🌳");
+        this.startCountdown();
       }
 
+      // this.http.getFlightSearchData(this.user.mail).subscribe(data => {
+      //   this.flightSearch = data;
+      //   console.log(this.user.mail);
+      
+      // let co2;
+      // this.flightSearch.forEach(data => {
+      //   co2 = data.co2
+      //   console.log(data.co2);
+      //   console.log(data);
+      // });
+      // this.flightSearch.length;
+      // console.log();
+      // this.chart = new Chart("MyChart", {
+      //   type: "line", //this denotes tha type of chart
 
-      this.chart = new Chart("MyChart", {
-        type: "line", //this denotes tha type of chart
+      //   data: {// values on X-Axis
+      //     labels: ['1er Flug', '2er Flug', '3er Flug'],
+      //     datasets: [
+      //       {
+      //         label: "Co2",
+      //         data: [co2, '400', '50'],
+      //         backgroundColor: [
+      //           'rgb(255, 99, 132)',
+      //           'rgb(54, 162, 235)',
+      //           'rgb(255, 205, 86)'
+      //         ],
+      //       },
+      //       {
+      //         label: "Bäume",
+      //         data: [this.trees, '20', '3'],
+      //         backgroundColor: [
+      //           'rgb(255, 99, 132)',
+      //           'rgb(54, 162, 235)',
+      //           'rgb(255, 205, 86)'
+      //         ],
+      //       }
+      //     ]
+      //   },
+      //   options: {
+      //     aspectRatio: 2.5
+      //   }
+      // });
+      // })
+    //   this.http.getFlightSearchData(this.user.mail).subscribe(data => {
+    //     this.flightSearch = data;
+      
+    //     let co2: any[] = [];
+    //     let trees: any[] = [];
+    //     let labels: any[] = [];
+      
+    //     this.flightSearch.forEach((flight, index) => {
+    //       co2.push(flight.co2);
+    //       trees.push(flight.trees);
+    //       labels.push(`Flug ${index + 1}`);
+    //     });
+      
+    //     this.chart = new Chart("MyChart", {
+    //       type: "line",
+    //       data: {
+    //         labels: labels,
+    //         datasets: [
+    //           {
+    //             label: "Co2",
+    //             data: co2,
+    //             backgroundColor: 'rgb(255, 99, 132)',
+    //           },
+    //           {
+    //             label: "Bäume",
+    //             data: trees,
+    //             backgroundColor: 'rgb(54, 162, 235)',
+    //           }
+    //         ]
+    //       },
+    //       options: {
+    //         aspectRatio: 2.5,
+    //       }
+    //     });
+    //   });
+    });
+  }
 
-        data: {// values on X-Axis
-          labels: ['1er Flug', '2er Flug', '3er Flug'],
-          datasets: [
-            {
-              label: "Co2",
-              data: [this.emissions, '400', '50'],
-              backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-              ],
-            },
-            {
-              label: "Bäume",
-              data: [this.trees, '20', '3'],
-              backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-              ],
-            }
-          ]
-        },
-        options: {
-          aspectRatio: 2.5
-        }
+  updateChart() {
+    this.http.getFlightSearchData(this.user.mail).subscribe(data => {
+      this.flightSearch = data;
+  
+      let co2: any[] = [];
+      let trees: any[] = [];
+      let labels: any[] = [];
+  
+      this.flightSearch.forEach((flight, index) => {
+        co2.push(flight.co2);
+        trees.push(flight.trees);
+        labels.push(`Flug ${index + 1}`);
       });
+  
+      this.chart.data.labels = labels;
+      this.chart.data.datasets[0].data = co2;
+      this.chart.data.datasets[1].data = trees;
+      this.chart.update();
     });
   }
 
@@ -431,6 +559,7 @@ export class MainPageComponent implements OnInit {
       this.wegAuto = temp2.route.distance * 1.609344;
       this.wegAuto = parseFloat(this.wegAuto.toFixed(2));
       //7.7 Liter pro 100 Kilometer
+      //https://www.google.com/search?q=wie+viel+verbrauch+an+liter+hat+ein+auto&rlz=1C1CHBD_deAT895AT895&oq=wie+viel+verbrauch+an+liter+hat&aqs=chrome.1.69i57j33i160j33i22i29i30l2.17844j0j15&sourceid=chrome&ie=UTF-8
       this.fuelUsed = this.wegAuto * 0.07;
       this.fuelUsed = parseFloat(this.fuelUsed.toFixed(2));
       this.hideButtons = false
@@ -444,7 +573,6 @@ export class MainPageComponent implements OnInit {
       this.wegBicycle = temp3.route.distance * 1.609344
       this.wegBicycle = parseFloat(this.wegBicycle.toFixed(2));
       this.durationBicycle = temp3.route.formattedTime
-
       console.log(this.wegBicycle)
       this.caloriens()
     })

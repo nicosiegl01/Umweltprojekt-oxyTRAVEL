@@ -3,8 +3,9 @@
   <div class="sectionHead" id="one">
     <div>
       <ul id="nav">
-        <li class="li" routerLink="login">Login</li>
-        <li class="li" routerLink="register">Sign-up</li>
+        <li class="li" *ngIf="user == null" routerLink="login">Login</li>
+        <li class="li" *ngIf="user == null" routerLink="register">Sign-up</li>
+        <li class="li" *ngIf="user != null" routerLink="account">Account</li>
       </ul>
     </div>
 
@@ -57,8 +58,11 @@
           <p>Distance: {{distance}} km</p>
           <p>Emissions: {{emissions}} tons Co2</p>
           <p>Trees: {{trees}} beech</p>
-
-
+          <div id="treeBox">
+            <p *ngFor="let tree of treeVis;let x = index">{{tree}}</p>
+            <!-- <p *ngIf="x%10==0"><br></p> -->
+          </div>
+          <p>{{countdown}}</p>
         </div>
       </div>
     </div>
@@ -89,12 +93,8 @@
           <p>Duration: {{durationCar.split(":")[0]}} Hours, {{durationCar.split(":")[1]}} Minutes</p>
           <p>Path: {{wegAuto}}km</p>
           <p>Fuel: {{fuelUsed}} Liter</p>
-          <p>Emissions: {{carEmissions}} tons Co2</p>
+          <p>Emissions: {{carEmissions}} kilogram Co2</p>
           <p>Trees: {{carEmissionTrees}} beech</p>
-          <div *ngFor="let i of treeVis;let x = index">
-          <p>{{i}}</p>
-          <p *ngIf="x%10==0"><br></p>
-          </div>
         </div>
       </div>
     </div>
@@ -125,9 +125,6 @@
     </div>
   </div>
   <div class="section" id="five">
-
-    <canvas id="MyChart">{{ chart }}</canvas>
-
 
     <div class="navigationButtons" id="navigationFive">
       <a href="#four"><span style="font-size: 7vh" class="material-icons">expand_less</span></a>

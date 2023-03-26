@@ -71,7 +71,7 @@ export class HTTPService {
     return this.http.get<number>(url)
   }
 
-  addFlightSearch(flight:string){
+  addFlightSearch(flight: FlightSearch){
     let url = this.path + "search"
     return this.http.post(url,{
       "flightnumber": "FRQ123"
@@ -94,6 +94,7 @@ export class HTTPService {
     console.log(c )
     console.log(flight)
     console.log(todayDate)
+    console.log("hallo" + trees);
     return this.http.post(url,{
       "flightnumber": flight,
       "timestamp_added": todayDate,
@@ -121,6 +122,12 @@ export class HTTPService {
     return this.http.post<FlightnoModel>(url,{
       "data": base64
     }, {headers: headers})
+  }
+
+  getFlightSearchData(mail: string){
+    let url = "http://localhost:8081/api/search/findByUser/" + mail;
+    console.log(url);
+    return this.http.get<FlightSearch[]>(url);
   }
 }
 
