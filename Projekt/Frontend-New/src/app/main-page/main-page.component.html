@@ -50,7 +50,7 @@
     <div class="subSection1">
       <!-- <div class="data" [hidden]="hideDetails"> -->
       <div class="data">
-        <div id="flight">
+        <div id="flight" *ngIf="!ifNan(trees)">
           <h1 id="h1Flight">Details for the flight: <br>{{lastSearch}}</h1>
           <p>From {{departureStation}} | {{departureCountry}}</p>
           <p>To {{arrivalStation}} | {{arrivalCountry}}</p>
@@ -63,6 +63,9 @@
             <!-- <p *ngIf="x%10==0"><br></p> -->
           </div>
           <p>{{countdown}}</p>
+        </div>
+        <div id="flight2" *nfIf="arrivalStation==null">
+          <h1 id="h1Flight2">Details for the flight: <br>There are no details</h1>
         </div>
       </div>
     </div>
