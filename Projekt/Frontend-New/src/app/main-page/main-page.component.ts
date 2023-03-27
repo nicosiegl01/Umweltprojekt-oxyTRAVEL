@@ -96,12 +96,12 @@ export class MainPageComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("my_user")!)
     console.log(this.user.mail);
     // this.http.getFlightSearchData(this.user.mail).subscribe(data => {
-    //   this.flightSearch = data; 
-    
+    //   this.flightSearch = data;
+
     //   let co2: any[] = [];
     //   let trees: any[] = [];
     //   let labels: any[] = [];
-    
+
     //   this.flightSearch.forEach((flight, index) => {
     //     co2.push(flight.co2);
     //     trees.push(flight.trees);
@@ -109,7 +109,7 @@ export class MainPageComponent implements OnInit {
     //     console.log(trees);
     //     labels.push(`Flug ${index + 1}`);
     //   });
-    
+
     //   this.chart = new Chart("MyChart", {
     //     type: "line",
     //     data: {
@@ -321,7 +321,7 @@ export class MainPageComponent implements OnInit {
         } else {
           this.stopCountdown();
         }
-      }, 1000); 
+      }, 1000);
     }, 1000)// Intervallzeit in Millisekunden
   }
 
@@ -355,7 +355,7 @@ export class MainPageComponent implements OnInit {
       // this.http.getFlightSearchData(this.user.mail).subscribe(data => {
       //   this.flightSearch = data;
       //   console.log(this.user.mail);
-      
+
       // let co2;
       // this.flightSearch.forEach(data => {
       //   co2 = data.co2
@@ -397,17 +397,17 @@ export class MainPageComponent implements OnInit {
       // })
     //   this.http.getFlightSearchData(this.user.mail).subscribe(data => {
     //     this.flightSearch = data;
-      
+
     //     let co2: any[] = [];
     //     let trees: any[] = [];
     //     let labels: any[] = [];
-      
+
     //     this.flightSearch.forEach((flight, index) => {
     //       co2.push(flight.co2);
     //       trees.push(flight.trees);
     //       labels.push(`Flug ${index + 1}`);
     //     });
-      
+
     //     this.chart = new Chart("MyChart", {
     //       type: "line",
     //       data: {
@@ -436,17 +436,17 @@ export class MainPageComponent implements OnInit {
   updateChart() {
     this.http.getFlightSearchData(this.user.mail).subscribe(data => {
       this.flightSearch = data;
-  
+
       let co2: any[] = [];
       let trees: any[] = [];
       let labels: any[] = [];
-  
+
       this.flightSearch.forEach((flight, index) => {
         co2.push(flight.co2);
         trees.push(flight.trees);
         labels.push(`Flug ${index + 1}`);
       });
-  
+
       this.chart.data.labels = labels;
       this.chart.data.datasets[0].data = co2;
       this.chart.data.datasets[1].data = trees;
@@ -585,11 +585,16 @@ export class MainPageComponent implements OnInit {
     this.pizzen = Math.floor(this.caloriensMen/1320)
   }
 
+<<<<<<< HEAD
   switch(){
     let x = this.fromLocation;
     let y = this.toLocation;
     this.fromLocation = y;
     this.toLocation = x;
+=======
+  ifNan(trees: number) {
+    return isNaN(trees)
+>>>>>>> df4c0703b945844d33f07dbbaf16f13b0b1cc826
   }
 }
 
