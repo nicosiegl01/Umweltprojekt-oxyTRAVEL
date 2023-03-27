@@ -10,7 +10,7 @@
   color: rgba(255, 255, 255, 1);
   text-align: center;
   font-weight: bold;
-  margin-top: -10vh;
+  margin-top: -3vh;
 }
 
 #Logo{
@@ -24,6 +24,31 @@
 }
 
 #button2{
+  width: 10%;
+  background-color: #fff;
+  text-align: center;
+  border: none;
+  color: #000;
+  margin-left: 29%;
+  margin-top: 4vh;
+  height: 4vh;
+  width: 7vw;
+  font-family: "Poppins";
+  font-weight: bold;
+  border-radius: 7px;
+}
+
+#switchButton{
+  width: 1%;
+  background-color: #fff;
+  text-align: center;
+  border: none;
+  color: #000;
+  margin-top: 4vh;
+  height: 3vh;
+  width: 3vw;
+  font-family: "Poppins";
+  border-radius: 7px;
 }
 
 #h1Flight {
@@ -51,6 +76,34 @@
   border: none;
   text-align: center;
   border-radius: 7px;
+}
+
+.inputRoute{
+  margin-left: auto;
+  margin-top: 4vh;
+  width: 8vw;
+  border: none;
+  text-align: center;
+  border-radius: 7px;
+  height: 3vh;
+}
+
+.inputSearch{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.route{
+  display: flex;
+  flex-direction: column;
+}
+
+#destination{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-around;
 }
 
 .button {
@@ -236,7 +289,7 @@
 
 #navigationOne {
   position: absolute;
-  bottom: 15vh;
+  bottom: 10vh;
   right: 47%;
 }
 

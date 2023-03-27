@@ -584,6 +584,13 @@ export class MainPageComponent implements OnInit {
     this.caloriensMen = caloriens
     this.pizzen = Math.floor(this.caloriensMen/1320)
   }
+
+  switch(){
+    let x = this.fromLocation;
+    let y = this.toLocation;
+    this.fromLocation = y;
+    this.toLocation = x;
+  }
 }
 
 enum options {

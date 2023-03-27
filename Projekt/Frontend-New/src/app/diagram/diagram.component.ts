@@ -3,6 +3,7 @@ import { HTTPService } from '../http/http.service';
 import { Customer } from '../interfaces/Customer.modle';
 import { FlightSearch } from '../interfaces/FlightSearch.model';
 import { Chart, registerables } from 'chart.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diagram',
@@ -15,7 +16,7 @@ export class DiagramComponent implements OnInit{
   flightSearch: FlightSearch[] = [];
   public chart:any;
 
-  constructor(private http: HTTPService){
+  constructor(private http: HTTPService, private route: Router){
     Chart.register(...registerables);
   }
 
@@ -63,4 +64,8 @@ export class DiagramComponent implements OnInit{
       });
     }
   )}
+
+  back(){
+    return this.route.navigate([""]);
+  }
 }

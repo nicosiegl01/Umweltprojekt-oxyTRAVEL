@@ -24,16 +24,26 @@
 
       <!--<canvas id="canvas" #canvas></canvas>-->
       <h3 id="file-status">{{statusOfImageUpload}}</h3>
-      <div class="inputSearch">
-        <label>Start</label>
-        <br>
-        <input [(ngModel)]="fromLocation">
-        <br>
-        <label>End</label>
-        <br>
-        <input [(ngModel)]="toLocation">
-        <button id="button2" (click)="searchByLocations()">Search</button>
-      </div>
+      <table class="inputSearch">
+          <div id="destination">
+            <th><label>Start</label></th>
+            <th><label>End</label></th>
+          </div>
+          <tr>
+            <td>
+              <div class="route">
+                <input [(ngModel)]="fromLocation" class="inputRoute">
+              </div>
+            </td>
+            <td><button id="switchButton" (click)="switch()">Switch</button></td>
+            <td>
+              <div class="route">
+                <input [(ngModel)]="toLocation" class="inputRoute">
+              </div>
+            </td>
+          </tr>
+      </table>
+      <button id="button2" (click)="searchByLocations()">Search</button>
     </div>
 <p style="color:rgba(0,0,0,0)">f</p>
     <div  class="navigationButtons" id="navigationOne"><!--[hidden]="hideButtons"-->
